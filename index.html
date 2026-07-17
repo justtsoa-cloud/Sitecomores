@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Suite École – Logiciel de gestion scolaire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.5; overflow-x: hidden; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .particle { position: absolute; background: rgba(26,60,110,0.1); border-radius: 50%; animation: floatParticle linear infinite; }
+        @keyframes floatParticle { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.5; } 90% { opacity: 0.5; } 100% { transform: translateY(-100px) rotate(360deg); opacity: 0; } }
+        .navbar { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(26,60,110,0.15); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; flex-wrap: wrap; gap: 16px; }
+        .logo { display: flex; align-items: center; gap: 10px; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .logo img { height: 45px; width: auto; }
+        .logo span { background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #1e293b; transition: 0.3s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #1A3C6E; transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn { background: transparent; color: #1e293b; padding: 0; font-size: 1rem; font-weight: 500; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .dropbtn i { font-size: 0.8rem; transition: transform 0.3s; }
+        .dropdown-content { display: none; position: absolute; top: 30px; left: 0; background: white; min-width: 180px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-radius: 16px; z-index: 1; border: 1px solid #e2e8f0; }
+        .dropdown-content a { color: #1e293b; padding: 12px 20px; text-decoration: none; display: block; font-weight: 500; }
+        .dropdown-content a:hover { background: #f8fafc; color: #1A3C6E; }
+        .btn-outline { border: 1.5px solid #1A3C6E; background: transparent; padding: 8px 20px; border-radius: 40px; font-weight: 600; color: #1A3C6E; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .btn-outline:hover { background: #1A3C6E; color: white; transform: scale(1.05); }
+        .btn-primary { background: #1A3C6E; color: white; padding: 14px 32px; border-radius: 40px; font-weight: 600; border: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+        .btn-primary:hover { transform: translateY(-3px); background: #0F2447; }
+        .btn-secondary { background: rgba(26,60,110,0.08); backdrop-filter: blur(4px); color: #1A3C6E; padding: 14px 32px; border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.3s; border: 1px solid rgba(26,60,110,0.2); display: inline-block; }
+        .btn-secondary:hover { background: #1A3C6E; color: white; transform: translateY(-3px); }
+        .contact-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 30px; }
+        .contact-btn { display: inline-flex; align-items: center; gap: 10px; background: white; padding: 12px 24px; border-radius: 60px; text-decoration: none; font-weight: 500; color: #1e293b; transition: 0.3s; border: 1px solid #e2e8f0; }
+        .contact-btn i { font-size: 1.2rem; }
+        .contact-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .contact-btn.whatsapp:hover { background: #25D366; color: white; }
+        .contact-btn.phone:hover { background: #1A3C6E; color: white; }
+        .contact-btn.facebook:hover { background: #1877F2; color: white; }
+        .contact-btn.email:hover { background: #27AE60; color: white; }
+        .hero { padding: 80px 0 60px; background: linear-gradient(135deg, #f0f4fa 0%, #e8edf5 50%, #ffffff 100%); background-size: 200% 200%; animation: gradientBG 10s ease infinite; }
+        .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 48px; }
+        .hero-content { flex: 1; }
+        .hero-badge { background: rgba(26,60,110,0.1); backdrop-filter: blur(4px); color: #1A3C6E; display: inline-block; padding: 6px 14px; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 20px; }
+        #typed-text { font-size: 1.3rem; color: #1A3C6E; font-weight: 500; margin-bottom: 32px; min-height: 70px; }
+        .hero-stats { display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2.2rem; font-weight: 800; color: #1A3C6E; display: inline-block; }
+        .hero-image { flex: 1; background: rgba(255,255,255,0.5); backdrop-filter: blur(8px); border-radius: 32px; padding: 24px; text-align: center; box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15); animation: float 4s ease-in-out infinite; }
+        .hero-image img { max-width: 100%; border-radius: 20px; }
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .section-sub { text-align: center; color: #475569; max-width: 700px; margin: 0 auto 48px auto; font-size: 1.1rem; }
+        .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .module-card { background: rgba(255,255,255,0.95); backdrop-filter: blur(4px); border-radius: 28px; padding: 32px 28px; transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); border: 1px solid rgba(26,60,110,0.12); }
+        .module-card:hover { transform: translateY(-12px); box-shadow: 0 30px 40px -15px rgba(26,60,110,0.25); border-color: rgba(26,60,110,0.3); }
+        .card-icon { font-size: 2.8rem; margin-bottom: 20px; }
+        .module-card h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 700; }
+        .feature-list { list-style: none; margin-top: 16px; }
+        .feature-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .pricing-card { background: white; border-radius: 32px; padding: 32px 28px; flex: 1; min-width: 260px; border: 1px solid #e2e8f0; transition: all 0.3s; position: relative; }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
+        .pricing-card.popular { border: 2px solid #27AE60; background: linear-gradient(135deg, #ffffff, #f8fafc); }
+        .popular-badge { background: #27AE60; color: white; padding: 4px 12px; border-radius: 40px; font-size: 0.7rem; font-weight: 700; position: absolute; top: -12px; left: 24px; }
+        .price { font-size: 2.4rem; font-weight: 800; margin: 20px 0 12px; color: #1A3C6E; }
+        
+        /* SECTION NOUVEAUTÉS UNIQUE AVEC IMAGE */
+        .nouveautes-section { padding: 60px 0; margin: 20px auto 40px; }
+        .nouveaute-bloc { display: flex; flex-wrap: wrap; align-items: center; gap: 48px; background: linear-gradient(135deg, #ffffff, #f8fafc); border-radius: 40px; padding: 32px; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08); border: 1px solid rgba(26,60,110,0.1); }
+        .nouveaute-image { flex: 1; min-width: 200px; text-align: center; }
+        .nouveaute-image img { max-width: 100%; border-radius: 28px; box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15); transition: transform 0.3s; object-fit: cover; }
+        .nouveaute-image img:hover { transform: scale(1.02); }
+        .nouveaute-texte { flex: 1.5; }
+        .badge-nouveau { display: inline-block; background: #27AE60; color: white; font-size: 0.7rem; font-weight: 700; padding: 4px 14px; border-radius: 40px; letter-spacing: 1px; margin-bottom: 16px; }
+        .nouveaute-texte h2 { font-size: 1.8rem; font-weight: 800; color: #1A3C6E; margin-bottom: 12px; }
+        .nouveaute-date { display: flex; align-items: center; gap: 8px; color: #27AE60; font-weight: 500; font-size: 0.85rem; margin-bottom: 16px; }
+        .nouveaute-description { color: #334155; line-height: 1.6; margin-bottom: 0; font-size: 1rem; }
+        
+        .cta-section { background: linear-gradient(135deg, #1A3C6E, #0F2447); border-radius: 48px; padding: 60px 40px; text-align: center; margin: 40px 0; }
+        .cta-section h2 { color: white; font-size: 2rem; margin-bottom: 16px; }
+        .cta-section p { color: #cbd5e1; margin-bottom: 16px; }
+        .footer { background: #1A3C6E; padding: 48px 0 24px; color: #cbd5e1; margin-top: 60px; }
+        .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+        .footer a { color: #9ca3af; text-decoration: none; }
+        .footer a:hover { color: #27AE60; }
+        .footer-copyright { text-align: center; border-top: 1px solid #2d4a6e; padding-top: 24px; font-size: 0.85rem; }
+
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: #1A3C6E; }
+
+        /* ===== SECTION DÉMO ===== */
+        .demo-section { padding: 40px 0; }
+        .demo-card { background: linear-gradient(135deg, #1A3C6E 0%, #0F2447 100%); border-radius: 32px; padding: 48px 40px; position: relative; overflow: hidden; }
+        .demo-card-bg { position: absolute; top: -60px; right: -60px; font-size: 200px; opacity: 0.05; pointer-events: none; }
+        .demo-card-bg2 { position: absolute; bottom: -40px; left: -40px; font-size: 120px; opacity: 0.05; pointer-events: none; }
+        .demo-content { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; position: relative; z-index: 2; }
+        .demo-icon { flex: 0 0 80px; text-align: center; }
+        .demo-icon-circle { background: rgba(255,255,255,0.12); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+        .demo-text { flex: 1; }
+        .demo-badges { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+        .demo-badge-free { background: #F39C12; color: white; padding: 2px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; }
+        .demo-badge-size { color: #94a3b8; font-size: 0.85rem; }
+        .demo-title { color: white; font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
+        .demo-desc { color: #cbd5e1; font-size: 1rem; margin-bottom: 16px; }
+        .demo-limits { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px 20px; margin-bottom: 20px; }
+        .demo-limit-item { color: #94a3b8; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
+        .demo-limit-item .check { color: #27AE60; font-size: 0.75rem; }
+        .demo-limit-item .lock { color: #F39C12; font-size: 0.75rem; }
+        .demo-btn { background: #F39C12; color: white; padding: 12px 32px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; border: none; }
+        .demo-btn:hover { transform: translateY(-3px); background: #e08e0b; }
+        .demo-btn-wrapper { display: flex; justify-content: center; margin-top: 4px; width: 90%; }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .section-title { font-size: 1.6rem; }
+            .hero-grid { flex-direction: column; }
+            .contact-buttons { flex-direction: column; align-items: center; }
+            .contact-btn { width: 80%; justify-content: center; }
+            .logo img { height: 35px; }
+            .hero-stats { justify-content: center; gap: 20px; flex-wrap: wrap; }
+            .stat { flex: 1; min-width: 80px; text-align: center; }
+            .stat-number { font-size: 1.5rem; }
+            .cta-section p { line-height: 1.6; }
+            .menu-toggle { display: block; }
+            .nav-links { display: none; width: 100%; flex-direction: column; gap: 20px; padding: 20px 0; border-top: 1px solid rgba(26,60,110,0.15); }
+            .nav-links.show { display: flex; }
+            .dropdown { width: 100%; }
+            .dropbtn { width: 100%; justify-content: space-between; }
+            .dropdown-content { position: static; box-shadow: none; border: none; padding-left: 20px; background: transparent; display: none; }
+            .dropdown-content.show { display: block; }
+            .dropdown-content a { padding: 10px 20px; }
+            .nav-links a { width: 100%; }
+            .nouveaute-bloc { flex-direction: column; text-align: center; padding: 24px; }
+            .nouveaute-texte h2 { font-size: 1.4rem; }
+            .nouveaute-date { justify-content: center; }
+            .demo-card { padding: 32px 24px; }
+            .demo-content { flex-direction: column; text-align: center; }
+            .demo-limits { grid-template-columns: 1fr 1fr; }
+            .demo-badges { justify-content: center; }
+            .demo-desc { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Suite École" onerror="this.style.display='none'">
+            <span>Suite École</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">🏠 Accueil</a>
+            <div class="dropdown" id="packsDropdown">
+                <button class="dropbtn">💼 Nos packs <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="basique.html">📘 Pack BASIQUE</a>
+                    <a href="pro.html">⭐ Pack PRO</a>
+                    <a href="premium.html">💎 Pack PREMIUM</a>
+                </div>
+            </div>
+            <a href="faq.html">💬 FAQ</a>
+            <a href="galerie.html">📸 Galerie</a>
+            <a href="#contact" class="btn-outline">Contact</a>
+        </div>
+    </div>
+</div>
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge">100% autonome · Hors ligne · Données chez vous</div>
+            <h1>Logiciel complet<br>pour les écoles</h1>
+            <div id="typed-text"></div>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="#tarifs" class="btn-primary"><i class="fas fa-download"></i> Découvrir les packs</a>
+                <a href="faq.html" class="btn-secondary"><i class="fas fa-question-circle"></i> FAQ</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-number" data-target="5">0</span><br>modules intégrés</div>
+                <div class="stat"><span class="stat-number" data-target="100">0</span><br>% hors ligne</div>
+                <div class="stat"><span class="stat-number" data-target="3">0</span><br>formules</div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/Suite.png" alt="Suite École aperçu" onerror="this.src='https://placehold.co/400x300?text=Suite+Ecole'">
+        </div>
+    </div>
+</section>
+
+<!-- SECTION NOUVEAUTÉS - PORTAIL PARENTS -->
+<section class="container nouveautes-section fade-up">
+    <div class="nouveaute-bloc">
+        <div class="nouveaute-image">
+            <img src="images/Portail_Parent.png" alt="Nouveauté : Portail Parents">
+        </div>
+        <div class="nouveaute-texte">
+            <span class="badge-nouveau"><i class="fas fa-star"></i> NOUVEAUTÉ</span>
+            <h2>👨‍👩‍👧 Nouveau : Portail Parents en ligne</h2>
+            <div class="nouveaute-date">
+                <i class="far fa-calendar-alt"></i> Juillet 2026
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-mobile-alt"></i> Accessible partout
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-shield-alt"></i> Pont sécurisé, données maîtrisées
+            </div>
+            <div class="nouveaute-description">
+                Offrez à votre établissement une interface moderne où les parents suivent l'évolution de leurs enfants depuis leur smartphone, leur tablette ou leur ordinateur, où qu'ils soient : notes et moyennes, paiements des écolages, emploi du temps, absences et retards. Votre logiciel principal Suite École reste 100% hors-ligne sur vos ordinateurs — le portail est un pont en ligne sécurisé dont vous gardez le contrôle total des données. 🎁 Pour le lancement, le déploiement initial est à 30 € au lieu de 60 € durant les mois de Juillet et Août. Contactez-nous pour en profiter avant la rentrée !
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION NOUVEAUTÉS - PORTAIL DIRECTION -->
+<section class="container nouveautes-section fade-up">
+    <div class="nouveaute-bloc">
+        <div class="nouveaute-image">
+            <img src="images/Portail_Direction.png" alt="Nouveauté : Portail Direction">
+        </div>
+        <div class="nouveaute-texte">
+            <span class="badge-nouveau"><i class="fas fa-star"></i> NOUVEAUTÉ</span>
+            <h2>🖥️ Nouveau : Portail Direction inclus gratuitement</h2>
+            <div class="nouveaute-date">
+                <i class="far fa-calendar-alt"></i> Juin 2026
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-lock"></i> Lecture Seule Sécurisée
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-network-wired"></i> Connexion Locale sans Internet
+            </div>
+            <div class="nouveaute-description">
+                Gardez un œil sur tout ce qui se passe dans votre école. Ce portail permet à la direction de visualiser toutes les données du logiciel — comptabilité, suivi des élèves, emplois du temps — depuis un autre ordinateur de l'établissement. Totalement hors ligne grâce à un serveur interne, il garantit à l'administration de travailler sereinement pendant que vous pilotez l'école. Fourni gratuitement sur demande avec votre pack !
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION TÉLÉCHARGEMENT DÉMO ===== -->
+<section class="demo-section container fade-up">
+    <div class="demo-card">
+        <div class="demo-card-bg">🔒</div>
+        <div class="demo-card-bg2">📦</div>
+        <div class="demo-content">
+            <div class="demo-icon">
+                <div class="demo-icon-circle">🧪</div>
+            </div>
+            <div class="demo-text">
+                <div class="demo-badges">
+                    <span class="demo-badge-free"><i class="fas fa-flask" style="margin-right: 4px;"></i> GRATUIT</span>
+                    <span class="demo-badge-size"><i class="fas fa-download" style="margin-right: 4px;"></i> 30 Mo</span>
+                    <span class="demo-badge-size"><i class="fab fa-windows"></i> Windows</span>
+                </div>
+                <h2 class="demo-title">Version Démo</h2>
+                <p class="demo-desc">Testez Suite École en conditions réelles. Toutes les fonctionnalités sont disponibles, avec quelques limites pour l'essai.</p>
+                <div class="demo-limits">
+                    <span class="demo-limit-item"><i class="fas fa-check-circle check"></i> 5 élèves</span>
+                    <span class="demo-limit-item"><i class="fas fa-check-circle check"></i> 3 professeurs</span>
+                    <span class="demo-limit-item"><i class="fas fa-check-circle check"></i> 2 personnels</span>
+                    <span class="demo-limit-item"><i class="fas fa-check-circle check"></i> 5 encaissements</span>
+                    <span class="demo-limit-item"><i class="fas fa-check-circle check"></i> 5 dépenses</span>
+                    <span class="demo-limit-item"><i class="fas fa-lock lock"></i> Suppression désactivée</span>
+                </div>
+                <div class="demo-btn-wrapper">
+                    <a href="https://telechargements.suitemg.com/" class="demo-btn" target="_blank" rel="noopener">
+                        <i class="fas fa-download"></i> Télécharger la Démo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="modules">
+    <div class="container">
+        <h2 class="section-title fade-up">📦 Une suite modulaire</h2>
+        <div class="section-sub fade-up">Chaque module répond à un besoin précis de votre établissement</div>
+        <div class="modules-grid">
+            <div class="module-card fade-up"><div class="card-icon">🔴</div><h3>Gestion Base</h3><p>Classes, élèves, matières, professeurs – centralisez vos données.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Import Excel/CSV</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Affectations profs/matières</li></ul></div>
+            <div class="module-card fade-up"><div class="card-icon">🔵</div><h3>BulletinApp</h3><p>Notes, bulletins PDF, décisions de passage et serveur Android.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Saisie web et mobile</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Bulletins personnalisables</li></ul></div>
+            <div class="module-card fade-up"><div class="card-icon">🟢</div><h3>ComptaÉcole</h3><p>Encaissements, dépenses, reçus PDF, suivi mensuel.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Écolage & inscriptions</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Reçus officiels</li></ul></div>
+            <div class="module-card fade-up"><div class="card-icon">🟡</div><h3>EDT</h3><p>Emploi du temps par classe/prof et suivi des heures.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Planning visuel</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Gestion des heures profs</li></ul></div>
+            <div class="module-card fade-up"><div class="card-icon">🟣</div><h3>Gestion Paie</h3><p>Bulletins de paie, primes, retenues, cotisations sociales.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Salaires profs & personnel</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Configurations illimitées</li></ul></div>
+            <div class="module-card fade-up"><div class="card-icon">👁️</div><h3>Vue globale</h3><p>Dashboard élève, indicateurs, rapports de passage.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Suivi financier & scolaire</li></ul></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="tarifs">
+    <div class="container">
+        <h2 class="section-title fade-up">💰 Formules adaptées</h2>
+        <div class="section-sub fade-up">Achat initial unique (Clé + Installation) · Zéro engagement par mois</div>
+        <div class="pricing-grid">
+            
+            <!-- Pack BASIQUE -->
+            <div class="pricing-card fade-up">
+                <h3>Pack BASIQUE</h3>
+                <div class="price">50 €</div>
+                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
+                    <i class="fas fa-chart-line"></i> Soit seulement <strong>4 € / mois</strong> la 1ère année
+                </div>
+                <hr>
+                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
+                    Puis redevance de 25 €/an dès la 2ème année (soit 2 €/mois)
+                </div>
+                <ul>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Gestion Base</li>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> BulletinApp</li>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> EDT + Heures profs</li>
+                </ul>
+                <a href="basique.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block;">📘 En savoir plus</a>
+            </div>
+            
+            <!-- Pack PRO -->
+            <div class="pricing-card popular fade-up">
+                <div class="popular-badge">⭐ Le plus vendu</div>
+                <h3>Pack PRO</h3>
+                <div class="price">80 €</div>
+                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
+                    <i class="fas fa-chart-line"></i> Soit seulement <strong>7 € / mois</strong> la 1ère année
+                </div>
+                <hr>
+                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
+                    Puis redevance de 35 €/an dès la 2ème année (soit 3 €/mois)
+                </div>
+                <ul>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Tout le Pack BASIQUE</li>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> + ComptaÉcole</li>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Reçus PDF, synthèses</li>
+                </ul>
+                <a href="pro.html" class="btn-primary" style="width:100%; text-align:center; margin-top:15px; display:block;">⭐ En savoir plus</a>
+            </div>
+            
+            <!-- Pack PREMIUM -->
+            <div class="pricing-card fade-up">
+                <h3>Pack PREMIUM</h3>
+                <div class="price">100 €</div>
+                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
+                    <i class="fas fa-chart-line"></i> Soit seulement <strong>8 € / mois</strong> la 1ère année
+                </div>
+                <hr>
+                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
+                    Puis redevance de 40 €/an dès la 2ème année (soit 3 €/mois)
+                </div>
+                <ul>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Tout le Pack PRO</li>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> + Gestion de Paie</li>
+                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Bulletins de paie complets</li>
+                </ul>
+                <a href="premium.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block;">💎 En savoir plus</a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="container" id="contact">
+    <div class="cta-section fade-up">
+        <h2>📢 Une solution clé en main pour votre école</h2>
+        <p>Démonstration<br>devis personnalisé</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/261383014883" class="contact-btn whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+261383014883" class="contact-btn phone"><i class="fas fa-phone-alt"></i> Appel</a>
+            <a href="https://web.facebook.com/profile.php?id=61590078991054" class="contact-btn facebook" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="mailto:contact@suitemg.com" class="contact-btn email"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+        <p style="margin-top: 24px; font-size:0.85rem; opacity:0.8;">Réponse rapide. </p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <strong>Suite École</strong><br>
+                Logiciel de gestion scolaire<br>
+                100% autonome
+            </div>
+            <div>
+                <strong>Ntsoa APPS</strong><br>
+                Éditeur du logiciel
+            </div>
+            <div>
+                <strong>Liens utiles</strong><br>
+                <a href="index.html">Accueil</a><br>
+                <a href="index.html#modules">Modules</a><br>
+                <a href="index.html#tarifs">Tarifs</a><br>
+                <a href="faq.html">FAQ</a><br>
+                <a href="galerie.html">Galerie</a><br>
+                <a href="contrat.html">Conditions d'utilisation</a>
+            </div>
+            <div>
+                <strong>Légal</strong><br>
+                © 2026 – Ntsoa APPS
+            </div>
+        </div>
+        <div class="footer-copyright">
+            Suite École — Gestion scolaire 100% hors ligne. 
+        </div>
+    </div>
+</footer>
+
+<script>
+    const texts = ["Gestion scolaire 100% autonome", "Bulletins PDF automatiques", "Comptabilité intégrée", "Emplois du temps et paie", "Sans abonnement, sans surprise"];
+    let textIndex = 0, charPos = 0, isDeleting = false;
+    const typedElement = document.getElementById("typed-text");
+    let timer;
+    function typeEffect() {
+        if (!typedElement) return;
+        const fullText = texts[textIndex];
+        if (isDeleting) {
+            charPos--;
+            typedElement.innerHTML = fullText.substring(0, charPos) + '<span style="border-right:2px solid #1A3C6E; animation: blink 0.7s infinite;">|</span>';
+            if (charPos === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; clearTimeout(timer); timer = setTimeout(typeEffect, 500); return; }
+        } else {
+            charPos++;
+            typedElement.innerHTML = fullText.substring(0, charPos) + '<span style="border-right:2px solid #1A3C6E; animation: blink 0.7s infinite;">|</span>';
+            if (charPos === fullText.length) { isDeleting = true; clearTimeout(timer); timer = setTimeout(typeEffect, 2000); return; }
+        }
+        const speed = isDeleting ? 40 : 80;
+        clearTimeout(timer);
+        timer = setTimeout(typeEffect, speed);
+    }
+    typeEffect();
+    const counters = document.querySelectorAll('.stat-number');
+    const observerOptions = { threshold: 0.3 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 50;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) { el.innerText = Math.floor(current); requestAnimationFrame(updateCounter); }
+                    else { el.innerText = target; }
+                };
+                updateCounter();
+                observer.unobserve(el);
+            }
+        });
+    }, observerOptions);
+    counters.forEach(counter => observer.observe(counter));
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => scrollObserver.observe(el));
+    
+    function createParticles() {
+        const container = document.getElementById('particles');
+        if (!container) return;
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 8 + 4;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 15 + 8 + 's';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            container.appendChild(particle);
+        }
+    }
+    createParticles();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksMobile = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => { navLinksMobile.classList.toggle('show'); });
+    }
+    const dropdown = document.getElementById('packsDropdown');
+    if(dropdown) {
+        let timeout;
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        const dropContent = dropdown.querySelector('.dropdown-content');
+        dropdown.addEventListener('mouseenter', () => { 
+            if (window.innerWidth > 768) { clearTimeout(timeout); dropContent.style.display = 'block'; } 
+        });
+        dropdown.addEventListener('mouseleave', () => { 
+            if (window.innerWidth > 768) { timeout = setTimeout(() => { dropContent.style.display = 'none'; }, 150); } 
+        });
+        dropbtn.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) { e.preventDefault(); dropContent.classList.toggle('show'); }
+        });
+    }
+</script>
+<script data-goatcounter="https://ntsoa.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

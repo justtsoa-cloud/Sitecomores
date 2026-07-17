@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie – Suite École</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.5; overflow-x: hidden; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .navbar { position: sticky; top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(26,60,110,0.15); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; flex-wrap: wrap; gap: 16px; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 45px; width: auto; }
+        .logo span { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #1e293b; transition: 0.3s; }
+        .nav-links a:hover { color: #1A3C6E; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn { background: transparent; color: #1e293b; padding: 0; font-size: 1rem; font-weight: 500; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .dropbtn i { font-size: 0.8rem; transition: transform 0.3s; }
+        .dropdown-content { display: none; position: absolute; top: 30px; left: 0; background: white; min-width: 180px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-radius: 16px; z-index: 1; border: 1px solid #e2e8f0; }
+        .dropdown-content a { color: #1e293b; padding: 12px 20px; text-decoration: none; display: block; font-weight: 500; }
+        .dropdown-content a:hover { background: #f8fafc; color: #1A3C6E; }
+        .btn-outline { border: 1.5px solid #1A3C6E; background: transparent; padding: 8px 20px; border-radius: 40px; font-weight: 600; color: #1A3C6E; transition: 0.3s; text-decoration: none; }
+        .btn-outline:hover { background: #1A3C6E; color: white; }
+        .hero { padding: 60px 0 40px; background: linear-gradient(135deg, #f0f4fa, #e8edf5); text-align: center; }
+        .hero h1 { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 16px; }
+        .hero p { font-size: 1.2rem; color: #475569; max-width: 700px; margin: 0 auto; }
+        .gallery-section { padding: 60px 0; }
+        .module-gallery { margin-bottom: 60px; }
+        .module-gallery h2 { font-size: 1.8rem; color: #1A3C6E; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; border-left: 4px solid #27AE60; padding-left: 20px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+        .gallery-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .gallery-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1); }
+        .gallery-card img { width: 100%; height: 200px; object-fit: cover; display: block; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+        .gallery-card .caption { padding: 16px; font-weight: 500; text-align: center; background: white; }
+        .placeholder-img { background: #f1f5f9; height: 200px; display: flex; align-items: center; justify-content: center; color: #94a3b8; flex-direction: column; gap: 8px; border-bottom: 1px solid #e2e8f0; }
+        .footer { background: #1A3C6E; padding: 48px 0 24px; color: #cbd5e1; margin-top: 60px; }
+        .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+        .footer a { color: #9ca3af; text-decoration: none; }
+        .footer a:hover { color: #27AE60; }
+        .footer-copyright { text-align: center; border-top: 1px solid #2d4a6e; padding-top: 24px; font-size: 0.85rem; }
+
+        /* Menu hamburger pour mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #1A3C6E;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .logo img { height: 35px; }
+            
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0;
+                border-top: 1px solid rgba(26,60,110,0.15);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .dropdown {
+                width: 100%;
+            }
+            .dropbtn {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 20px;
+                background: transparent;
+                display: none;
+            }
+            .dropdown-content.show {
+                display: block;
+            }
+            .dropdown-content a {
+                padding: 10px 20px;
+            }
+            .nav-links a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Suite École">
+            <span>Suite École</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">🏠 Accueil</a>
+            <div class="dropdown" id="packsDropdown">
+                <button class="dropbtn">💼 Nos packs <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="basique.html">📘 Pack BASIQUE</a>
+                    <a href="pro.html">⭐ Pack PRO</a>
+                    <a href="premium.html">💎 Pack PREMIUM</a>
+                </div>
+            </div>
+            <a href="faq.html">💬 FAQ</a>
+            <a href="galerie.html">📸 Galerie</a>
+            <a href="index.html#contact" class="btn-outline">Contact</a>
+        </div>
+    </div>
+</div>
+<section class="hero">
+    <div class="container">
+        <h1>📸 Galerie d'écrans</h1>
+        <p>Découvrez Suite École en images – chaque module en action</p>
+    </div>
+</section>
+<section class="gallery-section">
+    <div class="container">
+
+        <div class="module-gallery">
+            <h2><i class="fas fa-database"></i> Gestion Base</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="images/Captureclasse.png" alt="Gestion des classes"><div class="caption">📚 Gestion des classes et niveaux</div></div>
+                <div class="gallery-card"><img src="images/Captureimport.png" alt="Import Excel/CSV"><div class="caption">📥 Import des listes (élèves, professeurs, matières)</div></div>
+                <div class="gallery-card"><img src="images/Captureaffectation.png" alt="Affectations"><div class="caption">📋 Affectation des professeurs par classe et matière</div></div>
+            </div>
+        </div>
+
+        <div class="module-gallery">
+            <h2><i class="fas fa-graduation-cap"></i> BulletinApp</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="images/Capturenote.png" alt="Saisie des notes"><div class="caption">✏️ Saisie des notes par contrôle / examen</div></div>
+                <div class="gallery-card"><img src="images/Capturebulletin.png" alt="Bulletin PDF"><div class="caption">📄 Génération de bulletins PDF personnalisables</div></div>
+                <div class="gallery-card"><img src="images/Capturepassage.png" alt="Décisions de passage"><div class="caption">🏆 Aide à la décision (moyennes annuelles, progression)</div></div>
+                <div class="gallery-card"><div class="placeholder-img"><i class="fas fa-server"></i> Capture – Serveur Android</div><div class="caption">📡 Interface de connexion pour les professeurs (APK)</div></div>
+            </div>
+        </div>
+
+        <div class="module-gallery">
+            <h2><i class="fas fa-chart-line"></i> ComptaÉcole</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="images/Captureencaisse.png" alt="Encaissements"><div class="caption">💰 Enregistrement des encaissements (élèves / types)</div></div>
+                <div class="gallery-card"><img src="images/Capturedep.png" alt="Dépenses"><div class="caption">💸 Gestion des dépenses de l'établissement</div></div>
+                <div class="gallery-card"><img src="images/Capturesynths.png" alt="Synthèse financière"><div class="caption">📊 Tableau de bord financier + reçus PDF</div></div>
+            </div>
+        </div>
+
+        <div class="module-gallery">
+            <h2><i class="fas fa-calendar-alt"></i> EDT – Emploi du temps</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="images/Captureplanning.png" alt="Édition EDT"><div class="caption">📅 Création des plannings par classe / jour</div></div>
+                <div class="gallery-card"><img src="images/Capturevueheb.png" alt="Vue hebdomadaire"><div class="caption">👁️ Visualisation des emplois du temps</div></div>
+                <div class="gallery-card"><img src="images/Capturevuehor.png" alt="Heures professeurs"><div class="caption">⏱️ Saisie des heures par prof et calcul automatique</div></div>
+            </div>
+        </div>
+
+        <div class="module-gallery">
+            <h2><i class="fas fa-euro-sign"></i> Gestion de Paie (Premium)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="images/Capturepers.png" alt="Personnel"><div class="caption">👥 Gestion des employés (salaires fixes ou taux horaire)</div></div>
+                <div class="gallery-card"><img src="images/Capturepaie.png" alt="Bulletin de paie PDF"><div class="caption">📄 Génération de bulletins de paie complets</div></div>
+                <div class="gallery-card"><img src="images/Captureconf.png" alt="Configurations"><div class="caption">⚙️ Paramétrage des cotisations, primes, retenues</div></div>
+            </div>
+        </div>
+
+        <div class="module-gallery">
+            <h2><i class="fas fa-chalkboard-user"></i> Vue globale & DMS</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="images/Capturevueglob.png" alt="Vue globale par élève"><div class="caption">👁️ Toutes les infos (notes, compta, famille)</div></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <strong>Suite École</strong><br>
+                Logiciel de gestion scolaire<br>
+                100% autonome
+            </div>
+            <div>
+                <strong>Ntsoa APPS</strong><br>
+                Éditeur du logiciel
+            </div>
+            <div>
+                <strong>Liens utiles</strong><br>
+                <a href="index.html">Accueil</a><br>
+                <a href="index.html#modules">Modules</a><br>
+                <a href="index.html#tarifs">Tarifs</a><br>
+                <a href="faq.html">FAQ</a><br>
+                <a href="galerie.html">Galerie</a><br>
+                <a href="contrat.html">Conditions d'utilisation</a>
+            </div>
+            <div>
+                <strong>Légal</strong><br>
+                © 2026 – Ntsoa APPS
+            </div>
+        </div>
+        <div class="footer-copyright">
+            Suite École — Gestion scolaire 100% hors ligne. 
+        </div>
+    </div>
+</footer>
+<script>
+    // MENU HAMBURGER
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksMobile = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinksMobile.classList.toggle('show');
+        });
+    }
+
+    const dropdown = document.getElementById('packsDropdown');
+    if(dropdown) {
+        let timeout;
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        const dropContent = dropdown.querySelector('.dropdown-content');
+        
+        dropdown.addEventListener('mouseenter', () => { 
+            if (window.innerWidth > 768) {
+                clearTimeout(timeout); 
+                dropContent.style.display = 'block'; 
+            }
+        });
+        dropdown.addEventListener('mouseleave', () => { 
+            if (window.innerWidth > 768) {
+                timeout = setTimeout(() => { 
+                    dropContent.style.display = 'none'; 
+                }, 150);
+            }
+        });
+        
+        dropbtn.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropContent.classList.toggle('show');
+            }
+        });
+        
+        const content = dropdown.querySelector('.dropdown-content');
+        if(content) {
+            content.addEventListener('mouseenter', () => { 
+                if (window.innerWidth > 768) {
+                    clearTimeout(timeout); 
+                    content.style.display = 'block'; 
+                }
+            });
+            content.addEventListener('mouseleave', () => { 
+                if (window.innerWidth > 768) {
+                    timeout = setTimeout(() => { 
+                        content.style.display = 'none'; 
+                    }, 150);
+                }
+            });
+        }
+    }
+</script>
+<script data-goatcounter="https://ntsoa.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

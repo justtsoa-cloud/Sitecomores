@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions d'utilisation – Suite École</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .navbar { position: sticky; top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(26,60,110,0.15); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; flex-wrap: wrap; gap: 16px; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 45px; width: auto; }
+        .logo span { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #1e293b; transition: 0.3s; }
+        .nav-links a:hover { color: #1A3C6E; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn { background: transparent; color: #1e293b; padding: 0; font-size: 1rem; font-weight: 500; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .dropbtn i { font-size: 0.8rem; transition: transform 0.3s; }
+        .dropdown-content { display: none; position: absolute; top: 30px; left: 0; background: white; min-width: 180px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-radius: 16px; z-index: 1; border: 1px solid #e2e8f0; }
+        .dropdown-content a { color: #1e293b; padding: 12px 20px; text-decoration: none; display: block; font-weight: 500; }
+        .dropdown-content a:hover { background: #f8fafc; color: #1A3C6E; }
+        .btn-outline { border: 1.5px solid #1A3C6E; background: transparent; padding: 8px 20px; border-radius: 40px; font-weight: 600; color: #1A3C6E; transition: 0.3s; text-decoration: none; }
+        .btn-outline:hover { background: #1A3C6E; color: white; }
+        .hero { padding: 60px 0 40px; background: linear-gradient(135deg, #f0f4fa, #e8edf5); text-align: center; }
+        .hero h1 { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 16px; }
+        .hero p { font-size: 1.2rem; color: #475569; max-width: 700px; margin: 0 auto; }
+        .contract-section { padding: 60px 0; }
+        .contract-card { background: white; border-radius: 28px; border: 1px solid #e2e8f0; padding: 32px; margin-bottom: 32px; transition: 0.2s; }
+        .contract-card h2 { font-size: 1.8rem; color: #1A3C6E; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+        .contract-card h2 i { color: #27AE60; font-size: 1.6rem; }
+        .contract-card h3 { font-size: 1.3rem; color: #1e293b; margin: 20px 0 12px 0; }
+        .tarif-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .tarif-table th, .tarif-table td { border: 1px solid #e2e8f0; padding: 12px; text-align: left; }
+        .tarif-table th { background: #1A3C6E; color: white; font-weight: 600; }
+        .tarif-table tr:nth-child(even) { background: #f8fafc; }
+        .footer { background: #1A3C6E; padding: 48px 0 24px; color: #cbd5e1; margin-top: 60px; }
+        .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+        .footer a { color: #9ca3af; text-decoration: none; }
+        .footer a:hover { color: #27AE60; }
+        .footer-copyright { text-align: center; border-top: 1px solid #2d4a6e; padding-top: 24px; font-size: 0.85rem; }
+
+        /* Menu hamburger pour mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #1A3C6E;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .contract-card { padding: 20px; }
+            .tarif-table th, .tarif-table td { padding: 8px; }
+            .logo img { height: 35px; }
+            
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0;
+                border-top: 1px solid rgba(26,60,110,0.15);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .dropdown {
+                width: 100%;
+            }
+            .dropbtn {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 20px;
+                background: transparent;
+                display: none;
+            }
+            .dropdown-content.show {
+                display: block;
+            }
+            .dropdown-content a {
+                padding: 10px 20px;
+            }
+            .nav-links a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Suite École">
+            <span>Suite École</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">🏠 Accueil</a>
+            <div class="dropdown" id="packsDropdown">
+                <button class="dropbtn">💼 Nos packs <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="basique.html">📘 Pack BASIQUE</a>
+                    <a href="pro.html">⭐ Pack PRO</a>
+                    <a href="premium.html">💎 Pack PREMIUM</a>
+                </div>
+            </div>
+            <a href="faq.html">💬 FAQ</a>
+            <a href="galerie.html">📸 Galerie</a>
+            <a href="index.html#contact" class="btn-outline">Contact</a>
+        </div>
+    </div>
+</div>
+<section class="hero">
+    <div class="container">
+        <h1>📜 Conditions d'utilisation</h1>
+        <p>Conditions générales d'utilisation de Suite École</p>
+    </div>
+</section>
+<section class="contract-section">
+    <div class="container">
+
+        <div class="contract-card">
+            <h2><i class="fas fa-balance-scale"></i> 1. Objet</h2>
+            <p>Ce document définit les conditions dans lesquelles l'Éditeur (Ntsoa APPS) accorde au Client un droit d'usage du logiciel Suite École, ainsi que les conditions de maintenance et d'assistance associées.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-cubes"></i> 2. Modules inclus</h2>
+            <ul style="margin-left: 24px; margin-top: 8px;">
+                <li><strong>Pack BASIQUE</strong> : Gestion de Base, BulletinApp, EDTÉcole</li>
+                <li><strong>Pack PRO</strong> : Pack BASIQUE + ComptaÉcole</li>
+                <li><strong>Pack PREMIUM</strong> : Pack PRO + Gestion de Paie</li>
+            </ul>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-globe"></i> 3. Portails</h2>
+            <ul style="margin-left: 24px; margin-top: 8px;">
+                <li><strong>Portail Parents</strong> : suivi à distance des notes, bulletins et situation financière de l'enfant</li>
+                <li><strong>Portail Direction</strong> : supervision globale de l'établissement, inclus gratuitement</li>
+            </ul>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-tag"></i> 4. Formules et tarifs</h2>
+            <p>Tarifs proposés pour l'année <strong>2026/2027</strong> :</p>
+            <table class="tarif-table">
+                <thead>
+                    <tr><th>Pack</th><th>Achat initial</th><th>Redevance annuelle</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Pack BASIQUE</td><td>50 €</td><td>25 € / an</td></tr>
+                    <tr><td>Pack PRO</td><td>80 €</td><td>35 € / an</td></tr>
+                    <tr><td>Pack PREMIUM</td><td>100 €</td><td>40 € / an</td></tr>
+                </tbody>
+            </table>
+            <table class="tarif-table" style="margin-top: 20px;">
+                <thead>
+                    <tr><th>Portail</th><th>Achat initial</th><th>Redevance annuelle</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Portail Parent</td><td>60 €</td><td>20 € / an</td></tr>
+                    <tr><td>Portail Direction</td><td>0 €</td><td>0 € / an</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 12px;">Le logiciel est acheté tel quel : aucune personnalisation ne peut être exigée en cours d'année. Des mises à jour standards sont incluses pour les clients à jour de leur redevance. Toute demande de module sur mesure est facturée à partir de <strong>20 €</strong>.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-handshake"></i> 5. Types d'engagement</h2>
+            <h3>📌 Option A – Contrat 3 ans avec tarifs gelés</h3>
+            <p>Engagement ferme sur 3 ans. L'Éditeur garantit le maintien des tarifs de renouvellement pendant toute la période.</p>
+            <h3>📌 Option B – Contrat 1 an sans engagement</h3>
+            <p>Le Client n'est pas obligé de renouveler. En cas de renouvellement ultérieur, le tarif applicable est celui en vigueur à ce moment.</p>
+            <p><strong>Aucun remboursement</strong> ne pourra être exigé en cas de non-utilisation ou d'arrêt volontaire.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-key"></i> 6. Droit d'usage et expiration</h2>
+            <p>Le droit d'utilisation est accordé sous forme de <strong>licence annuelle</strong>. Chaque clé d'activation est valable 12 mois. À l'expiration, sans renouvellement, le logiciel devient <strong>totalement bloqué</strong>.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-desktop"></i> 7. Politique multi-postes</h2>
+            <p><strong>Une clé de licence = un seul ordinateur physique.</strong> Elle ne peut être copiée, déplacée, transférée ou réutilisée sur un autre poste sans accord exprès de l'Éditeur.</p>
+            <p style="margin-top: 12px;">Pour plusieurs ordinateurs <strong>au sein du même endroit physique</strong> : un seul achat initial est exigé pour le poste principal ; chaque poste additionnel installé lors de la mise en service ne doit que la licence annuelle correspondante. Toute installation ultérieure sur un nouveau poste est considérée comme une intervention distincte et peut être facturée.</p>
+            <p style="margin-top: 12px;"><strong>Endroits physiques différents</strong> (groupe d'établissements) : chaque site distinct doit acquérir sa propre licence de pack. Une formule d'<strong>achat groupé</strong> est toutefois applicable à partir de trois (3) achats et plus.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-tools"></i> 8. Installation et réinstallation</h2>
+            <p>Toute réinstallation, réactivation ou remplacement de poste (perte, panne, formatage, changement d'ordinateur...) est facturée forfaitairement <strong>10 € par intervention</strong>. Les frais de déplacement restent à la charge du Client.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-database"></i> 9. Saisie et création de la base de données</h2>
+            <p>La création ou saisie initiale de la base de données n'est pas incluse dans les tarifs du logiciel. Si le Client confie cette tâche à l'Éditeur, elle est facturée séparément, à partir de <strong>10 €</strong>, selon le volume de données.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-save"></i> 10. Sauvegarde des données</h2>
+            <p>Le Client est seul responsable de la sauvegarde de sa base de données locale. L'Éditeur n'effectue aucune sauvegarde externe. Une sauvegarde régulière (idéalement quotidienne) sur un support distinct est fortement recommandée.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-wrench"></i> 11. Maintenance et limites du service</h2>
+            <p>La maintenance couvre le fonctionnement normal du logiciel, hors virus, mauvaise manipulation, matériel défectueux ou mauvaise configuration. <strong>Le logiciel est fourni en l'état</strong>, sans garantie d'absence totale d'erreurs.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-exclamation-triangle"></i> 12. Responsabilité</h2>
+            <p>L'Éditeur n'est pas responsable des pertes de données, interruptions d'activité ou dommages indirects liés à l'environnement informatique du Client. Le Client utilise le logiciel sous sa propre responsabilité.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-user-shield"></i> 13. Confidentialité</h2>
+            <p>L'Éditeur s'engage à ne pas accéder, consulter ni divulguer les données du Client, sauf demande expresse. Les données des élèves, notes et paiements restent la propriété exclusive de l'établissement.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-file-contract"></i> 14. Résiliation et absence de remboursement</h2>
+            <p>En cas de non-paiement, d'usage abusif ou d'arrêt volontaire, l'Éditeur peut suspendre ou mettre fin au droit d'usage. Les sommes déjà versées restent acquises à l'Éditeur, sans remboursement.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-chart-line"></i> 15. Évolution des tarifs après les 3 ans</h2>
+            <p>Pour l'Option A, les tarifs restent gelés pendant 3 ans. Passé ce délai, l'Éditeur peut réviser librement les tarifs de renouvellement.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-gift"></i> 16. Parrainage</h2>
+            <p>Pour chaque établissement parrainé et signé :</p>
+            <ul style="margin-left: 24px; margin-top: 8px;">
+                <li><strong>6 €</strong> pour un Pack BASIQUE</li>
+                <li><strong>10 €</strong> pour un Pack PRO</li>
+                <li><strong>15 €</strong> pour un Pack PREMIUM</li>
+            </ul>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-users"></i> 17. Achats groupés</h2>
+            <p>À partir de 3 packs initiaux achetés ensemble (réseau d'écoles ou établissements associés), l'Éditeur accorde une <strong>réduction de 10 %</strong> sur l'achat initial de chaque pack.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-gavel"></i> 18. Litiges</h2>
+            <p>En cas de désaccord, les parties chercheront d'abord une solution amiable.</p>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-envelope"></i> 19. Contact</h2>
+            <p>Pour toute question, vous pouvez nous contacter :</p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px;">
+                <a href="https://wa.me/261331312437" class="contact-btn" style="display:inline-flex; align-items:center; gap:8px; background:#e2e8f0; padding:8px 16px; border-radius:40px; text-decoration:none; color:#1e293b;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="tel:+261383014883" class="contact-btn" style="display:inline-flex; align-items:center; gap:8px; background:#e2e8f0; padding:8px 16px; border-radius:40px; text-decoration:none; color:#1e293b;"><i class="fas fa-phone-alt"></i> Appel</a>
+                <a href="https://web.facebook.com/profile.php?id=61590078991054" class="contact-btn" style="display:inline-flex; align-items:center; gap:8px; background:#e2e8f0; padding:8px 16px; border-radius:40px; text-decoration:none; color:#1e293b;"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="mailto:contact@suitemg.com" class="contact-btn" style="display:inline-flex; align-items:center; gap:8px; background:#e2e8f0; padding:8px 16px; border-radius:40px; text-decoration:none; color:#1e293b;"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+        </div>
+
+        <div class="contract-card">
+            <h2><i class="fas fa-building"></i> 20. Identité de l'éditeur</h2>
+            <p>
+                <strong>Suite École</strong> est édité par <strong>Ntsoa APPS</strong>.
+            </p>
+            <p style="margin-top: 16px; font-size: 0.85rem; color: #64748b;">
+                Conformément à la législation en vigueur.
+            </p>
+        </div>
+
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <strong>Suite École</strong><br>
+                Logiciel de gestion scolaire<br>
+                100% autonome
+            </div>
+            <div>
+                <strong>Ntsoa APPS</strong><br>
+                Éditeur du logiciel
+            </div>
+            <div>
+                <strong>Liens utiles</strong><br>
+                <a href="index.html">Accueil</a><br>
+                <a href="index.html#modules">Modules</a><br>
+                <a href="index.html#tarifs">Tarifs</a><br>
+                <a href="faq.html">FAQ</a><br>
+                <a href="galerie.html">Galerie</a><br>
+                <a href="contrat.html">Conditions d'utilisation</a>
+            </div>
+            <div>
+                <strong>Légal</strong><br>
+                © 2026 – Ntsoa APPS
+            </div>
+        </div>
+        <div class="footer-copyright">
+            Suite École — Gestion scolaire 100% hors ligne. 
+        </div>
+    </div>
+</footer>
+<script>
+    // MENU HAMBURGER
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksMobile = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinksMobile.classList.toggle('show');
+        });
+    }
+
+    const dropdown = document.getElementById('packsDropdown');
+    if(dropdown) {
+        let timeout;
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        const dropContent = dropdown.querySelector('.dropdown-content');
+        
+        dropdown.addEventListener('mouseenter', () => { 
+            if (window.innerWidth > 768) {
+                clearTimeout(timeout); 
+                dropContent.style.display = 'block'; 
+            }
+        });
+        dropdown.addEventListener('mouseleave', () => { 
+            if (window.innerWidth > 768) {
+                timeout = setTimeout(() => { 
+                    dropContent.style.display = 'none'; 
+                }, 150);
+            }
+        });
+        
+        dropbtn.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropContent.classList.toggle('show');
+            }
+        });
+        
+        const content = dropdown.querySelector('.dropdown-content');
+        if(content) {
+            content.addEventListener('mouseenter', () => { 
+                if (window.innerWidth > 768) {
+                    clearTimeout(timeout); 
+                    content.style.display = 'block'; 
+                }
+            });
+            content.addEventListener('mouseleave', () => { 
+                if (window.innerWidth > 768) {
+                    timeout = setTimeout(() => { 
+                        content.style.display = 'none'; 
+                    }, 150);
+                }
+            });
+        }
+    }
+</script>
+<script data-goatcounter="https://ntsoa.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

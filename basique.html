@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pack BASIQUE – Suite École</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.5; overflow-x: hidden; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .navbar { position: sticky; top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(26,60,110,0.15); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; flex-wrap: wrap; gap: 16px; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 45px; width: auto; }
+        .logo span { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #1e293b; transition: 0.3s; }
+        .nav-links a:hover { color: #1A3C6E; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn { background: transparent; color: #1e293b; padding: 0; font-size: 1rem; font-weight: 500; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .dropbtn i { font-size: 0.8rem; transition: transform 0.3s; }
+        .dropdown-content { display: none; position: absolute; top: 30px; left: 0; background: white; min-width: 180px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-radius: 16px; z-index: 1; border: 1px solid #e2e8f0; }
+        .dropdown-content a { color: #1e293b; padding: 12px 20px; text-decoration: none; display: block; font-weight: 500; }
+        .dropdown-content a:hover { background: #f8fafc; color: #1A3C6E; }
+        .btn-outline { border: 1.5px solid #1A3C6E; background: transparent; padding: 8px 20px; border-radius: 40px; font-weight: 600; color: #1A3C6E; transition: 0.3s; text-decoration: none; }
+        .btn-outline:hover { background: #1A3C6E; color: white; }
+        .hero { padding: 60px 0 40px; background: linear-gradient(135deg, #f0f4fa, #e8edf5); text-align: center; }
+        .hero h1 { font-size: 3.2rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 16px; }
+        .pack-badge { display: inline-block; background: #1A3C6E; color: white; padding: 8px 24px; border-radius: 40px; font-size: 1rem; font-weight: 600; margin-bottom: 20px; }
+        .pack-content { display: flex; flex-wrap: wrap; gap: 48px; margin: 40px 0; align-items: flex-start; }
+        .pack-text { flex: 1; }
+        .pack-image { flex: 1; background: #f8fafc; border-radius: 28px; padding: 20px; text-align: center; border: 1px solid #e2e8f0; }
+        .pack-image img { max-width: 100%; border-radius: 20px; }
+        .price-card { background: #f8fafc; border-radius: 28px; padding: 32px 24px; margin: 20px 0; text-align: center; }
+        .price-main { font-size: 2.2rem; font-weight: 800; color: #1A3C6E; }
+        .plus-large { font-size: 2rem; font-weight: 800; margin: 12px 0; color: #1e293b; }
+        .price-year { font-size: 2rem; font-weight: 800; color: #1A3C6E; }
+        .renewal-text { margin-top: 24px; font-size: 0.95rem; color: #475569; line-height: 1.5; }
+        .plus-medium { font-size: 1.3rem; font-weight: 700; margin: 8px 0; color: #1e293b; }
+        .modules-list, .included-list { background: white; border-radius: 24px; padding: 24px; margin: 24px 0; border: 1px solid #e2e8f0; }
+        .modules-list h3, .included-list h3 { font-size: 1.4rem; margin-bottom: 16px; color: #1A3C6E; display: flex; align-items: center; gap: 10px; }
+        .modules-list ul, .included-list ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+        .modules-list li, .included-list li { display: flex; align-items: center; gap: 10px; }
+        .modules-list i, .included-list i { color: #27AE60; width: 20px; }
+        .pack-switch { display: flex; justify-content: center; gap: 20px; margin: 40px 0 20px; flex-wrap: wrap; }
+        .pack-switch a { background: white; border: 1px solid #e2e8f0; padding: 10px 24px; border-radius: 40px; text-decoration: none; color: #1e293b; font-weight: 500; transition: 0.3s; }
+        .pack-switch a:hover { background: #1A3C6E; color: white; border-color: #1A3C6E; }
+        .footer { background: #1A3C6E; padding: 48px 0 24px; color: #cbd5e1; margin-top: 60px; }
+        .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+        .footer a { color: #9ca3af; text-decoration: none; }
+        .footer a:hover { color: #27AE60; }
+        .footer-copyright { text-align: center; border-top: 1px solid #2d4a6e; padding-top: 24px; font-size: 0.85rem; }
+
+        /* Menu hamburger pour mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #1A3C6E;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .pack-content { flex-direction: column; }
+            .pack-switch { flex-direction: column; align-items: center; }
+            .logo img { height: 35px; }
+            
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0;
+                border-top: 1px solid rgba(26,60,110,0.15);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .dropdown {
+                width: 100%;
+            }
+            .dropbtn {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 20px;
+                background: transparent;
+                display: none;
+            }
+            .dropdown-content.show {
+                display: block;
+            }
+            .dropdown-content a {
+                padding: 10px 20px;
+            }
+            .nav-links a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Suite École">
+            <span>Suite École</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">🏠 Accueil</a>
+            <div class="dropdown" id="packsDropdown">
+                <button class="dropbtn">💼 Nos packs <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="basique.html">📘 Pack BASIQUE</a>
+                    <a href="pro.html">⭐ Pack PRO</a>
+                    <a href="premium.html">💎 Pack PREMIUM</a>
+                </div>
+            </div>
+            <a href="faq.html">💬 FAQ</a>
+            <a href="galerie.html">📸 Galerie</a>
+            <a href="index.html#contact" class="btn-outline">Contact</a>
+        </div>
+    </div>
+</div>
+<section class="hero">
+    <div class="container">
+        <div class="pack-badge">📘 PACK BASIQUE</div>
+        <h1>L'essentiel pour bien démarrer</h1>
+        <p>Les modules fondamentaux pour gérer votre établissement au quotidien</p>
+    </div>
+</section>
+<section class="container">
+    <div class="pack-content">
+        <div class="pack-text">
+            <div class="price-card">
+                <div class="price-main">50 € achat initial</div>
+                <div class="plus-large">puis</div>
+                <div class="price-year">25 € / An</div>
+                <div class="renewal-text">
+                    Redevance annuelle incluant<br>
+                    la nouvelle clé d'authentification
+                </div>
+                <div class="plus-medium">+</div>
+                <div class="renewal-text" style="margin-top: 0;">mise à jour annuelle majeure</div>
+            </div>
+            <div class="modules-list"><h3><i class="fas fa-cubes"></i> Modules inclus</h3><ul><li><i class="fas fa-check-circle"></i> Gestion Base (classes, élèves, matières, professeurs, affectations)</li><li><i class="fas fa-check-circle"></i> BulletinApp (notes, bulletins PDF, décisions, serveur Android)</li><li><i class="fas fa-check-circle"></i> EDT (emploi du temps, gestion des heures profs)</li><li><i class="fas fa-check-circle"></i> Vue globale par élève</li></ul></div>
+            <div class="included-list"><h3><i class="fas fa-gem"></i> Ce qui est inclus</h3><ul><li><i class="fas fa-check-circle"></i> Installation sur votre poste</li><li><i class="fas fa-check-circle"></i> Activation de la licence</li><li><i class="fas fa-check-circle"></i> Prise en main complète + formation adaptée pour vous et votre équipe</li><li><i class="fas fa-check-circle"></i> Support WhatsApp, téléphone, email ou Facebook</li></ul></div>
+        </div>
+        <div class="pack-image"><img src="images/Capturebasique.png" alt="Aperçu Pack BASIQUE"><p style="margin-top:12px; font-size:0.8rem; color:#64748b;">Aperçu</p></div>
+    </div>
+    <div class="pack-switch"><a href="pro.html">⭐ Voir le pack PRO</a><a href="premium.html">💎 Voir le pack PREMIUM</a></div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <strong>Suite École</strong><br>
+                Logiciel de gestion scolaire<br>
+                100% autonome
+            </div>
+            <div>
+                <strong>Ntsoa APPS</strong><br>
+                Éditeur du logiciel
+            </div>
+            <div>
+                <strong>Liens utiles</strong><br>
+                <a href="index.html">Accueil</a><br>
+                <a href="index.html#modules">Modules</a><br>
+                <a href="index.html#tarifs">Tarifs</a><br>
+                <a href="faq.html">FAQ</a><br>
+                <a href="galerie.html">Galerie</a><br>
+                <a href="contrat.html">Conditions d'utilisation</a>
+            </div>
+            <div>
+                <strong>Légal</strong><br>
+                © 2026 – Ntsoa APPS
+            </div>
+        </div>
+        <div class="footer-copyright">
+            Suite École — Gestion scolaire 100% hors ligne. 
+        </div>
+    </div>
+</footer>
+<script>
+    // MENU HAMBURGER
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksMobile = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinksMobile.classList.toggle('show');
+        });
+    }
+
+    const dropdown = document.getElementById('packsDropdown');
+    if(dropdown) {
+        let timeout;
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        const dropContent = dropdown.querySelector('.dropdown-content');
+        
+        dropdown.addEventListener('mouseenter', () => { 
+            if (window.innerWidth > 768) {
+                clearTimeout(timeout); 
+                dropContent.style.display = 'block'; 
+            }
+        });
+        dropdown.addEventListener('mouseleave', () => { 
+            if (window.innerWidth > 768) {
+                timeout = setTimeout(() => { 
+                    dropContent.style.display = 'none'; 
+                }, 150);
+            }
+        });
+        
+        dropbtn.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropContent.classList.toggle('show');
+            }
+        });
+        
+        const content = dropdown.querySelector('.dropdown-content');
+        if(content) {
+            content.addEventListener('mouseenter', () => { 
+                if (window.innerWidth > 768) {
+                    clearTimeout(timeout); 
+                    content.style.display = 'block'; 
+                }
+            });
+            content.addEventListener('mouseleave', () => { 
+                if (window.innerWidth > 768) {
+                    timeout = setTimeout(() => { 
+                        content.style.display = 'none'; 
+                    }, 150);
+                }
+            });
+        }
+    }
+</script>
+<script data-goatcounter="https://ntsoa.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
