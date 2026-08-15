@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ – Suite École</title>
+    <title>Nouveautés – Suite École</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -125,6 +125,17 @@
                 width: 100%;
             }
         }
+        /* SECTION NOUVEAUTÉS UNIQUE AVEC IMAGE */
+        .nouveautes-section { padding: 60px 0; margin: 20px auto 40px; }
+        .nouveaute-bloc { display: flex; flex-wrap: wrap; align-items: center; gap: 48px; background: linear-gradient(135deg, #ffffff, #f8fafc); border-radius: 40px; padding: 32px; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08); border: 1px solid rgba(26,60,110,0.1); }
+        .nouveaute-image { flex: 1; min-width: 200px; text-align: center; }
+        .nouveaute-image img { max-width: 100%; border-radius: 28px; box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15); transition: transform 0.3s; object-fit: cover; }
+        .nouveaute-image img:hover { transform: scale(1.02); }
+        .nouveaute-texte { flex: 1.5; }
+        .badge-nouveau { display: inline-block; background: #27AE60; color: white; font-size: 0.7rem; font-weight: 700; padding: 4px 14px; border-radius: 40px; letter-spacing: 1px; margin-bottom: 16px; }
+        .nouveaute-texte h2 { font-size: 1.8rem; font-weight: 800; color: #1A3C6E; margin-bottom: 12px; }
+        .nouveaute-date { display: flex; align-items: center; gap: 8px; color: #27AE60; font-weight: 500; font-size: 0.85rem; margin-bottom: 16px; }
+        .nouveaute-description { color: #334155; line-height: 1.6; margin-bottom: 0; font-size: 1rem; }
     </style>
 </head>
 <body>
@@ -169,58 +180,149 @@
 </div>
 <section class="hero">
     <div class="container">
-        <h1>📖 Foire aux questions</h1>
-        <p>Toutes les réponses pour bien démarrer avec Suite École</p>
+        <h1>🆕 Nouveautés</h1>
+        <p>Tout ce qui a changé récemment sur Suite École</p>
     </div>
 </section>
-<section class="faq-section">
+<section class="nouveautes-page-section" style="padding: 60px 0;">
     <div class="container">
-
-        <div class="faq-category">
-            <h2 class="category-title">🏢 Généralités</h2>
-            <div class="faq-grid">
-                <div class="faq-item"><div class="faq-question"><span>❓ Qu'est-ce que Suite École exactement ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Suite École est un logiciel de gestion scolaire complet, autonome, qui fonctionne entièrement hors ligne.</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>❓ À quels types d'établissements s'adresse Suite École ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><ul><li>Écoles primaires, secondaires et lycées</li><li>Centres de formation professionnelle</li><li>Établissements scolaires privés et publics</li></ul></div></div>
-                <div class="faq-item"><div class="faq-question"><span>❓ Le logiciel fonctionne-t-il vraiment sans Internet ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p><strong>Oui, à 100%.</strong> Internet n'est nécessaire que pour les mises à jour annuelles.</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>❓ Puis-je utiliser Suite École sur plusieurs ordinateurs ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Une licence = un ordinateur. Pas de copie ni de transfert sans accord.</p></div></div>
+<!-- SECTION NOUVEAUTÉS - PACK BUSINESS -->
+<section class="container nouveautes-section fade-up">
+    <div class="nouveaute-bloc">
+        <div class="nouveaute-image">
+            <img src="images/Capturebusiness.png" alt="Nouveauté : Pack BUSINESS">
+        </div>
+        <div class="nouveaute-texte">
+            <span class="badge-nouveau"><i class="fas fa-star"></i> NOUVEAU PACK</span>
+            <h2>🏆 Nouveau : Pack BUSINESS</h2>
+            <div class="nouveaute-date">
+                <i class="far fa-calendar-alt"></i> Août 2026
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-utensils"></i> Module Cantine dédié
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-coins"></i> Pilotage financier complet
+            </div>
+            <div class="nouveaute-description">
+                Une nouvelle formule au sommet de la gamme, pensée pour les établissements qui gèrent aussi la restauration scolaire. Le Pack BUSINESS reprend tout le Pack PREMIUM (Base, BulletinApp, EDT, ComptaÉcole, Gestion de Paie) et y ajoute un <strong>module Cantine à part entière</strong> : présence aux repas, listes par classe et paiements regroupés, bien séparés de l'écolage pour une comptabilité limpide. Le pack le plus complet de Suite École pour un pilotage à 360° de votre établissement.
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="faq-category">
-            <h2 class="category-title">⚙️ Installation</h2>
-            <div class="faq-grid">
-                <div class="faq-item"><div class="faq-question"><span>❓ Quelle est la configuration minimale requise ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><ul><li>Windows 10/11 ou Linux</li><li>4 Go de RAM</li><li>500 Mo d'espace disque</li></ul></div></div>
-                <div class="faq-item"><div class="faq-question"><span>❓ Comment se passe l'installation ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Installation + activation de la licence + formation adaptée pour vous et votre équipe.</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>❓ Comment sauvegarder mes données ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Sauvegardez régulièrement le fichier <code>suite_ecole.db</code> sur une clé USB ou un cloud.</p></div></div>
+<!-- SECTION NOUVEAUTÉS - CERTIFICATS -->
+<section class="container nouveautes-section fade-up">
+    <div class="nouveaute-bloc">
+        <div class="nouveaute-image">
+            <img src="images/CaptureCertificat.png" alt="Nouveauté : Certificats administratifs">
+        </div>
+        <div class="nouveaute-texte">
+            <span class="badge-nouveau"><i class="fas fa-star"></i> NOUVEAUTÉ</span>
+            <h2>📑 Nouveau : Certificats administratifs en un clic</h2>
+            <div class="nouveaute-date">
+                <i class="far fa-calendar-alt"></i> Août 2026
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-file-pdf"></i> PDF prêt à imprimer
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-signature"></i> Signature de la direction
+            </div>
+            <div class="nouveaute-description">
+                Fini les documents administratifs à recomposer à la main. Le Certificat de scolarité se génère automatiquement depuis la fiche de l'élève, sur tous les packs Suite École, avec les informations de l'école et la signature de la direction déjà en place. Sur les packs Gestion et L'Île des Enfants, le Certificat de travail pour le personnel est également disponible en un clic.
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="faq-category">
-            <h2 class="category-title">💰 Licence, paiement & engagement</h2>
-            <div class="faq-grid">
-                <div class="faq-item"><div class="faq-question"><span>❓ Comment fonctionne le paiement ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p><strong>L'achat initial inclut déjà la première année d'utilisation (logiciel + clé).</strong></p><p>La redevance annuelle (<strong>+25 €</strong>, <strong>+35 €</strong> ou <strong>+40 € / an</strong>) ne commence <strong>qu'à partir de la 2ᵉ année</strong>.</p><p><strong>Exemple pour le Pack PRO :</strong><br>- Année 1 : <strong>80 €</strong> (achat initial) – rien de plus<br>- Année 2 : <strong>35 €</strong><br>- Année 3 : <strong>35 €</strong></p><p>✅ <strong>Aucun cumul la première année.</strong></p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>❓ Sommes-nous obligés de renouveler chaque année ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><ul><li><strong>Option A (Contrat 3 ans)</strong> : engagement ferme sur 3 ans, tarifs gelés.</li><li><strong>Option B (Contrat 1 an)</strong> : sans obligation, renouvellement au tarif en vigueur.</li></ul></div></div>
-                <div class="faq-item"><div class="faq-question"><span>❓ Que se passe-t-il si je ne renouvelle pas ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Le logiciel se bloque après 12 mois. Vos données restent intactes mais inaccessibles tant que la licence n'est pas renouvelée.</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>❓ Quelle différence entre les packs ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><ul><li><strong>Basique</strong> : Base + Bulletin + EDT</li><li><strong>Pro</strong> : Basique + Compta</li><li><strong>Premium</strong> : Pro + Paie</li></ul></div></div>
+<!-- SECTION NOUVEAUTÉS - PORTAIL CANTINE -->
+<section class="container nouveautes-section fade-up">
+    <div class="nouveaute-bloc">
+        <div class="nouveaute-image">
+            <img src="images/CapturePortailCantine.png" alt="Nouveauté : Portail Cantine">
+        </div>
+        <div class="nouveaute-texte">
+            <span class="badge-nouveau"><i class="fas fa-star"></i> NOUVEAU PORTAIL</span>
+            <h2>🍽️ Nouveau : Portail Cantine en ligne</h2>
+            <div class="nouveaute-date">
+                <i class="far fa-calendar-alt"></i> Août 2026
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-clipboard-check"></i> Présence en un clic
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-network-wired"></i> Connexion locale
+            </div>
+            <div class="nouveaute-description">
+                Le personnel de cantine coche directement, depuis un navigateur, les élèves présents au repas, classe par classe et jour par jour — sans toucher à l'ordinateur principal de la comptabilité. Les présences remontent automatiquement dans Suite École pour un suivi des repas toujours à jour, tout en restant sur votre réseau local.
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="faq-category">
-            <h2 class="category-title">📬 Contact & support</h2>
-            <div class="faq-grid">
-                <div class="faq-item"><div class="faq-question"><span>❓ Comment obtenir de l'aide rapidement ?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Contactez-nous directement :</p><div class="contact-buttons"><a href="https://wa.me/261331312437" class="contact-btn whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+261383014883" class="contact-btn phone"><i class="fas fa-phone-alt"></i> Appel</a><a href="https://web.facebook.com/profile.php?id=61590078991054" class="contact-btn facebook" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a><a href="mailto:contact@suitemg.com" class="contact-btn email"><i class="fas fa-envelope"></i> Email</a></div><p style="margin-top: 10px;">Pas de chatbot. Un humain vous répond.</p></div></div>
+<!-- SECTION NOUVEAUTÉS - PORTAIL ENSEIGNANTS -->
+<section class="container nouveautes-section fade-up">
+    <div class="nouveaute-bloc">
+        <div class="nouveaute-image">
+            <img src="images/CapturePortailEnseignants.png" alt="Nouveauté : Portail Enseignants">
+        </div>
+        <div class="nouveaute-texte">
+            <span class="badge-nouveau"><i class="fas fa-star"></i> NOUVEAU PORTAIL</span>
+            <h2>🍎 Nouveau : Portail Enseignants en ligne</h2>
+            <div class="nouveaute-date">
+                <i class="far fa-calendar-alt"></i> Août 2026
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-check-double"></i> Présences & notes
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-network-wired"></i> Connexion locale
+            </div>
+            <div class="nouveaute-description">
+                Chaque professeur se connecte à son propre espace pour pointer son arrivée et son départ, marquer les présences de ses classes et saisir les notes — le tout depuis n'importe quel navigateur, sans installation. Un gain de temps quotidien pour les enseignants et une donnée fiable et centralisée pour l'établissement.
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="packs-card">
-            <h3>🎁 Nos packs – choisissez celui qui vous correspond</h3>
-            <div class="packs-grid">
-                <div class="pack-mini"><h4>📘 Pack BASIQUE</h4><div class="price-mini">50 € puis 25 €/an</div><p>Gestion Base + Bulletin + EDT</p><a href="basique.html" class="btn-small-outline">En savoir plus</a></div>
-                <div class="pack-mini"><h4>⭐ Pack PRO</h4><div class="price-mini">80 € puis 35 €/an</div><p>Basique + ComptaÉcole</p><a href="pro.html" class="btn-small">Le plus vendu</a></div>
-                <div class="pack-mini"><h4>💎 Pack PREMIUM</h4><div class="price-mini">100 € puis 40 €/an</div><p>Pro + Gestion de Paie</p><a href="premium.html" class="btn-small-outline">En savoir plus</a></div>
+<!-- SECTION NOUVEAUTÉS - PORTAIL PARENTS -->
+<section class="container nouveautes-section fade-up">
+    <div class="nouveaute-bloc">
+        <div class="nouveaute-image">
+            <img src="images/Portail_Parent.png" alt="Nouveauté : Portail Parents">
+        </div>
+        <div class="nouveaute-texte">
+            <span class="badge-nouveau"><i class="fas fa-star"></i> NOUVEAUTÉ</span>
+            <h2>👨‍👩‍👧 Nouveau : Portail Parents enrichi</h2>
+            <div class="nouveaute-date">
+                <i class="far fa-calendar-alt"></i> Juillet-Août 2026
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-comments"></i> Messagerie directe
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-shield-alt"></i> Pont sécurisé, données maîtrisées
+            </div>
+            <div class="nouveaute-description">
+                Offrez à votre établissement une interface moderne où les parents suivent l'évolution de leurs enfants depuis leur smartphone, leur tablette ou leur ordinateur, où qu'ils soient : notes et moyennes, emploi du temps, absences et retards. Le portail permet désormais le <strong>paiement poste par poste</strong> (écolage, cantine, activités…) avec un suivi payé/impayé clair, une <strong>messagerie directe</strong> avec l'école accompagnée de notifications de nouveaux messages, et une <strong>réinitialisation autonome du mot de passe</strong> en cas d'oubli. Votre logiciel principal Suite École reste 100% hors-ligne sur vos ordinateurs — le portail est un pont en ligne sécurisé dont vous gardez le contrôle total des données. 🎁 Pour le lancement, le déploiement initial est à 30 € au lieu de 60 € durant les mois de Juillet et Août. Contactez-nous pour en profiter avant la rentrée !
             </div>
         </div>
+    </div>
+</section>
 
+<!-- SECTION NOUVEAUTÉS - PORTAIL DIRECTION -->
+<section class="container nouveautes-section fade-up">
+    <div class="nouveaute-bloc">
+        <div class="nouveaute-image">
+            <img src="images/Portail_Direction.png" alt="Nouveauté : Portail Direction">
+        </div>
+        <div class="nouveaute-texte">
+            <span class="badge-nouveau"><i class="fas fa-star"></i> NOUVEAUTÉ</span>
+            <h2>🖥️ Nouveau : Portail Direction inclus gratuitement</h2>
+            <div class="nouveaute-date">
+                <i class="far fa-calendar-alt"></i> Juin 2026
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-lock"></i> Lecture Seule Sécurisée
+                <span style="width:6px;height:6px;background:#cbd5e1;border-radius:50%;display:inline-block;"></span>
+                <i class="fas fa-network-wired"></i> Connexion Locale sans Internet
+            </div>
+            <div class="nouveaute-description">
+                Gardez un œil sur tout ce qui se passe dans votre école. Ce portail permet à la direction de visualiser toutes les données du logiciel — comptabilité, suivi des élèves, emplois du temps — depuis un autre ordinateur de l'établissement. Totalement hors ligne grâce à un serveur interne, il garantit à l'administration de travailler sereinement pendant que vous pilotez l'école. Fourni gratuitement sur demande avec votre pack !
+            </div>
+        </div>
+    </div>
+</section>
     </div>
 </section>
 <footer class="footer">
