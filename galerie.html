@@ -124,6 +124,15 @@
                     <a href="gestion.html">🗂️ Pack GESTION</a>
                 </div>
             </div>
+            <div class="dropdown" id="portailsDropdown">
+                <button class="dropbtn">🌐 Portails <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="portail-parent.html">👨‍👩‍👧 Portail Parent</a>
+                    <a href="portail-direction.html">🏫 Portail Direction</a>
+                    <a href="portail-enseignants.html">🍎 Portail Enseignants</a>
+                    <a href="portail-cantine.html">🍽️ Portail Cantine</a>
+                </div>
+            </div>
             <a href="faq.html">💬 FAQ</a>
             <a href="galerie.html">📸 Galerie</a>
             <a href="index.html#contact" class="btn-outline">Contact</a>
@@ -235,50 +244,46 @@
         });
     }
 
-    const dropdown = document.getElementById('packsDropdown');
-    if(dropdown) {
+    document.querySelectorAll('.dropdown').forEach((dropdown) => {
         let timeout;
         const dropbtn = dropdown.querySelector('.dropbtn');
         const dropContent = dropdown.querySelector('.dropdown-content');
-        
-        dropdown.addEventListener('mouseenter', () => { 
+
+        dropdown.addEventListener('mouseenter', () => {
             if (window.innerWidth > 768) {
-                clearTimeout(timeout); 
-                dropContent.style.display = 'block'; 
+                clearTimeout(timeout);
+                dropContent.style.display = 'block';
             }
         });
-        dropdown.addEventListener('mouseleave', () => { 
+        dropdown.addEventListener('mouseleave', () => {
             if (window.innerWidth > 768) {
-                timeout = setTimeout(() => { 
-                    dropContent.style.display = 'none'; 
+                timeout = setTimeout(() => {
+                    dropContent.style.display = 'none';
                 }, 150);
             }
         });
-        
+
         dropbtn.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
                 dropContent.classList.toggle('show');
             }
         });
-        
-        const content = dropdown.querySelector('.dropdown-content');
-        if(content) {
-            content.addEventListener('mouseenter', () => { 
-                if (window.innerWidth > 768) {
-                    clearTimeout(timeout); 
-                    content.style.display = 'block'; 
-                }
-            });
-            content.addEventListener('mouseleave', () => { 
-                if (window.innerWidth > 768) {
-                    timeout = setTimeout(() => { 
-                        content.style.display = 'none'; 
-                    }, 150);
-                }
-            });
-        }
-    }
+
+        dropContent.addEventListener('mouseenter', () => {
+            if (window.innerWidth > 768) {
+                clearTimeout(timeout);
+                dropContent.style.display = 'block';
+            }
+        });
+        dropContent.addEventListener('mouseleave', () => {
+            if (window.innerWidth > 768) {
+                timeout = setTimeout(() => {
+                    dropContent.style.display = 'none';
+                }, 150);
+            }
+        });
+    });
 </script>
 <script data-goatcounter="https://ntsoa.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
