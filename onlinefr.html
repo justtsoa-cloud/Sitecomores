@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suite École Online – 100% en ligne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.5; overflow-x: hidden; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .navbar { position: sticky; top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(26,60,110,0.15); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; flex-wrap: wrap; gap: 16px; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 45px; width: auto; }
+        .logo span { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #1e293b; transition: 0.3s; }
+        .nav-links a:hover { color: #1A3C6E; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn { background: transparent; color: #1e293b; padding: 0; font-size: 1rem; font-weight: 500; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .dropbtn i { font-size: 0.8rem; transition: transform 0.3s; }
+        .dropdown-content { display: none; position: absolute; top: 30px; left: 0; background: white; min-width: 180px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-radius: 16px; z-index: 1; border: 1px solid #e2e8f0; }
+        .dropdown-content a { color: #1e293b; padding: 12px 20px; text-decoration: none; display: block; font-weight: 500; }
+        .dropdown-content a:hover { background: #f8fafc; color: #1A3C6E; }
+        .btn-outline { border: 1.5px solid #1A3C6E; background: transparent; padding: 8px 20px; border-radius: 40px; font-weight: 600; color: #1A3C6E; transition: 0.3s; text-decoration: none; }
+        .btn-outline:hover { background: #1A3C6E; color: white; }
+
+        .hero { padding: 64px 0 48px; background: linear-gradient(135deg, #0F2447, #1A3C6E); text-align: center; color: #fff; }
+        .hero-badge-online { display: inline-block; background: rgba(217,162,78,0.15); border: 1px solid #D9A24E; color: #D9A24E; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 20px; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; }
+        .hero p { font-size: 1.15rem; color: #b9c7de; max-width: 640px; margin: 0 auto 30px; }
+        .hero .cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-online-primary { background: #D9A24E; color: #0F2447; padding: 14px 32px; border-radius: 40px; font-weight: 700; border: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+        .btn-online-primary:hover { transform: translateY(-3px); background: #e8b76a; }
+        .btn-online-secondary { background: rgba(255,255,255,0.08); color: #fff; padding: 14px 32px; border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.3s; border: 1px solid rgba(255,255,255,0.25); display: inline-block; }
+        .btn-online-secondary:hover { background: rgba(255,255,255,0.16); transform: translateY(-3px); }
+
+        .section { padding: 70px 0; }
+        .section-title { text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 14px; color: #1A3C6E; }
+        .section-sub { text-align: center; color: #475569; max-width: 700px; margin: 0 auto 44px auto; font-size: 1.05rem; }
+
+        .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+        .feat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 24px; padding: 26px 24px; }
+        .feat-card i { font-size: 1.8rem; color: #D9A24E; margin-bottom: 12px; display: block; }
+        .feat-card h3 { font-size: 1.1rem; margin-bottom: 6px; color: #1A3C6E; }
+        .feat-card p { font-size: 0.92rem; color: #475569; }
+
+        .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; }
+        .pricing-card { background: white; border-radius: 28px; padding: 30px 26px; flex: 1; min-width: 240px; max-width: 270px; border: 1px solid #e2e8f0; transition: all 0.3s; position: relative; }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); }
+        .pricing-card.popular { border: 2px solid #D9A24E; background: linear-gradient(135deg, #ffffff, #fdf7ec); }
+        .popular-badge { background: #D9A24E; color: #0F2447; padding: 4px 12px; border-radius: 40px; font-size: 0.7rem; font-weight: 700; position: absolute; top: -12px; left: 24px; }
+        .price { font-size: 1.9rem; font-weight: 800; margin: 16px 0 4px; color: #1A3C6E; }
+        .price small { font-size: 0.95rem; font-weight: 600; color: #64748b; }
+        .tarif-note { text-align: center; margin-top: 36px; color: #64748b; font-size: 0.95rem; }
+        .tarif-note a { color: #1A3C6E; font-weight: 600; }
+
+        .demo-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+        .demo-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px 26px; flex: 1; min-width: 260px; max-width: 340px; }
+        .demo-card i { font-size: 1.6rem; color: #1A3C6E; margin-bottom: 10px; display: block; }
+        .demo-card h3 { font-size: 1.15rem; margin-bottom: 10px; color: #1A3C6E; }
+        .demo-cred { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px 14px; margin-top: 6px; font-size: 0.92rem; }
+        .demo-cred code { background: #eef2f7; padding: 2px 6px; border-radius: 6px; font-family: monospace; }
+        .demo-note { text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 24px; }
+
+        .footer { background: #1A3C6E; padding: 48px 0 24px; color: #cbd5e1; margin-top: 20px; }
+        .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+        .footer a { color: #9ca3af; text-decoration: none; }
+        .footer a:hover { color: #D9A24E; }
+        .footer-copyright { text-align: center; border-top: 1px solid #2d4a6e; padding-top: 24px; font-size: 0.85rem; }
+
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: #1A3C6E; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .logo img { height: 35px; }
+            .menu-toggle { display: block; }
+            .nav-links { display: none; width: 100%; flex-direction: column; gap: 20px; padding: 20px 0; border-top: 1px solid rgba(26,60,110,0.15); }
+            .nav-links.show { display: flex; }
+            .dropdown { width: 100%; }
+            .dropbtn { width: 100%; justify-content: space-between; }
+            .dropdown-content { position: static; box-shadow: none; border: none; padding-left: 20px; background: transparent; display: none; }
+            .dropdown-content.show { display: block; }
+            .dropdown-content a { padding: 10px 20px; }
+            .nav-links a { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Suite École" onerror="this.style.display='none'">
+            <span>Suite École</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">🏠 Accueil</a>
+            <div class="dropdown" id="packsDropdown">
+                <button class="dropbtn">💼 Nos packs <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="basique.html">📘 Pack BASIQUE</a>
+                    <a href="pro.html">⭐ Pack PRO</a>
+                    <a href="premium.html">💎 Pack PREMIUM</a>
+                    <a href="business.html">🏆 Pack BUSINESS</a>
+                    <hr style="margin:6px 12px; border:none; border-top:1px solid #e2e8f0;">
+                    <a href="pro-fr.html">🇫🇷 Pack PRO FR</a>
+                    <a href="business-fr.html">🇫🇷 Pack BUSINESS FR</a>
+                    <hr style="margin:6px 12px; border:none; border-top:1px solid #e2e8f0;">
+                    <a href="gestion.html">🗂️ Pack GESTION</a>
+                </div>
+            </div>
+            <div class="dropdown" id="portailsDropdown">
+                <button class="dropbtn">🌐 Portails <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="portail-parent.html">👨‍👩‍👧 Portail Parent</a>
+                    <a href="portail-direction.html">🏫 Portail Direction</a>
+                    <a href="portail-enseignants.html">🍎 Portail Enseignants</a>
+                    <a href="portail-cantine.html">🍽️ Portail Cantine</a>
+                    <a href="portail-secretaire.html">💰 Portail Secrétaire</a>
+                </div>
+            </div>
+            <a href="onlinefr.html" style="color:#1A3C6E; font-weight:700;">☁️ Online</a>
+            <a href="faq.html">💬 FAQ</a>
+            <a href="galerie.html">📸 Galerie</a>
+            <a href="nouveautes.html">🆕 Nouveautés</a>
+            <a href="https://telechargements.suitemg.com" target="_blank"><i class="fas fa-download"></i> Télécharger</a>
+            <a href="#contact" class="btn-outline">Contact</a>
+        </div>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge-online">☁️ NOUVEAU</div>
+        <h1>Suite École Online</h1>
+        <p>Pour les groupes scolaires avec plusieurs établissements : un directeur pilote tous ses
+            établissements depuis un seul compte, où qu'il soit. Élèves, notes, bulletins,
+            comptabilité, emploi du temps, espaces Professeur et Parent — accessibles depuis
+            n'importe quel navigateur. La gamme desktop reste, elle, 100% autonome et hors ligne.</p>
+        <div class="cta-row">
+            <a href="https://online.suitemg.com" target="_blank" class="btn-online-primary"><i class="fas fa-arrow-right"></i> Essayer maintenant</a>
+            <a href="#tarifs-online" class="btn-online-secondary">Voir les tarifs</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Ce que vous pouvez faire en ligne</h2>
+        <div class="section-sub">Le même cœur que la gamme desktop, pensé pour un directeur qui gère plusieurs établissements à la fois.</div>
+        <div class="feat-grid">
+            <div class="feat-card"><i class="fas fa-building"></i><h3>Multi-établissements</h3><p>Un seul compte, un sélecteur pour basculer entre vos établissements instantanément.</p></div>
+            <div class="feat-card"><i class="fas fa-globe"></i><h3>Accessible partout</h3><p>Aucune installation, aucun serveur à gérer — juste un navigateur, où que vous soyez.</p></div>
+            <div class="feat-card"><i class="fas fa-users"></i><h3>Espaces Direction, Prof, Parent</h3><p>Chaque profil a son espace : notes, pointage, bulletins, présence, suivi financier.</p></div>
+            <div class="feat-card"><i class="fas fa-shield-halved"></i><h3>Données hébergées et sauvegardées</h3><p>Vos données vivent sur un serveur dédié, avec sauvegardes — pas sur un poste isolé.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="tarifs-online" style="background:#f8fafc;">
+    <div class="container">
+        <h2 class="section-title">Tarifs</h2>
+        <div class="section-sub">Abonnement mensuel, hébergement inclus. Le tarif dépend du nombre total d'établissements rattachés à votre compte.</div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>2 à 3 établissements</h3>
+                <div class="price">100 €<br><small>/ mois</small></div>
+            </div>
+            <div class="pricing-card popular">
+                <div class="popular-badge">⭐ Le plus courant</div>
+                <h3>4 à 7 établissements</h3>
+                <div class="price">150 €<br><small>/ mois</small></div>
+            </div>
+            <div class="pricing-card">
+                <h3>8 à 10 établissements</h3>
+                <div class="price">180 €<br><small>/ mois</small></div>
+            </div>
+            <div class="pricing-card">
+                <h3>11 à 20 établissements</h3>
+                <div class="price">200 €<br><small>/ mois</small></div>
+            </div>
+        </div>
+        <div class="tarif-note">
+            Un seul établissement ? La gamme desktop (achat unique + petite redevance annuelle) reste
+            le choix le plus économique — <a href="index.html#tarifs">voir nos packs</a>.
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Testez par vous-même</h2>
+        <div class="section-sub">Comptes de démonstration partagés — aucune donnée saisie n'est conservée.</div>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Espace Direction</h3>
+                <p style="color:#475569; font-size:0.92rem;">Bascule entre plusieurs établissements, gère élèves, notes, compta, EDT, paie.</p>
+                <div class="demo-cred">Identifiant : <code>directeur@test.mg</code></div>
+                <div class="demo-cred">Mot de passe : <code>test1234</code></div>
+            </div>
+            <div class="demo-card">
+                <i class="fas fa-people-roof"></i>
+                <h3>Espace Parent</h3>
+                <p style="color:#475569; font-size:0.92rem;">Bulletin, présence, emploi du temps et suivi financier, pour 2 enfants liés.</p>
+                <div class="demo-cred">Identifiant : <code>parent@test.mg</code></div>
+                <div class="demo-cred">Mot de passe : <code>test1234</code></div>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:30px;">
+            <a href="https://online.suitemg.com" target="_blank" class="btn-outline" style="padding:14px 32px; font-size:1rem;">☁️ Se connecter à online.suitemg.com</a>
+        </div>
+        <div class="demo-note">Comptes de démonstration partagés entre tous les visiteurs — pas pour de vraies données.</div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <strong>Suite École</strong><br>
+                Logiciel de gestion scolaire, 100% hors ligne<br><br>
+                <strong>Suite École Online</strong><br>
+                Multi-établissements, 100% en ligne
+            </div>
+            <div>
+                <strong>Ntsoa APPS</strong><br>
+                NIF : 5001 6939 46<br>
+                STAT : 61102 12 2014 0 01039
+            </div>
+            <div>
+                <strong>Liens utiles</strong><br>
+                <a href="index.html">Accueil</a><br>
+                <a href="index.html#modules">Modules</a><br>
+                <a href="index.html#tarifs">Tarifs desktop</a><br>
+                <a href="onlinefr.html">Suite École Online</a><br>
+                <a href="faq.html">FAQ</a><br>
+                <a href="contrat.html">Conditions d'utilisation</a>
+            </div>
+            <div>
+                <strong>Légal</strong><br>
+                © 2026 – Ntsoa APPS
+            </div>
+        </div>
+        <div class="footer-copyright">
+            Suite École : 100% hors ligne. Suite École Online : 100% en ligne.
+        </div>
+    </div>
+</footer>
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksMobile = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinksMobile.classList.toggle('show'));
+    }
+    document.querySelectorAll('.dropdown').forEach((dropdown) => {
+        let timeout;
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        const dropContent = dropdown.querySelector('.dropdown-content');
+        dropdown.addEventListener('mouseenter', () => { if (window.innerWidth > 768) { clearTimeout(timeout); dropContent.style.display = 'block'; } });
+        dropdown.addEventListener('mouseleave', () => { if (window.innerWidth > 768) { timeout = setTimeout(() => { dropContent.style.display = 'none'; }, 150); } });
+        dropbtn.addEventListener('click', (e) => { if (window.innerWidth <= 768) { e.preventDefault(); dropContent.classList.toggle('show'); } });
+    });
+</script>
+<script data-goatcounter="https://ntsoa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
