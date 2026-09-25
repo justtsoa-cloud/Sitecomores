@@ -39,6 +39,15 @@
         .price-year { font-size: 2rem; font-weight: 800; color: #1A3C6E; }
         .renewal-text { margin-top: 24px; font-size: 0.95rem; color: #475569; line-height: 1.5; }
         .plus-medium { font-size: 1.3rem; font-weight: 700; margin: 8px 0; color: #1e293b; }
+        .formula-radio { position: absolute; opacity: 0; pointer-events: none; }
+        .formula-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+        .formula-tabs label { font-size: 0.85rem; font-weight: 700; padding: 8px 16px; border-radius: 999px; background: white; border: 1.5px solid #e2e8f0; color: #64748b; cursor: pointer; transition: 0.2s; }
+        .formula-tabs label:hover { border-color: #1A3C6E; color: #1A3C6E; }
+        .formula-panel { display: none; }
+        .formula-note { margin-top: 20px; font-size: 0.85rem; color: #27AE60; font-weight: 700; }
+        #fb1:checked ~ .formula-tabs label[for="fb1"],
+        #fb3:checked ~ .formula-tabs label[for="fb3"] { background: #1A3C6E; border-color: #1A3C6E; color: white; }
+        #fb1:checked ~ #panel-fb1, #fb3:checked ~ #panel-fb3 { display: block; }
         .modules-list, .included-list { background: white; border-radius: 24px; padding: 24px; margin: 24px 0; border: 1px solid #e2e8f0; }
         .modules-list h3, .included-list h3 { font-size: 1.4rem; margin-bottom: 16px; color: #1A3C6E; display: flex; align-items: center; gap: 10px; }
         .modules-list ul, .included-list ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
@@ -126,12 +135,14 @@
                     <a href="basique.html">📘 Pack BASIQUE</a>
                     <a href="pro.html">⭐ Pack PRO</a>
                     <a href="premium.html">💎 Pack PREMIUM</a>
-                    <a href="business.html">🏆 Pack BUSINESS</a>
                     <hr style="margin:6px 12px; border:none; border-top:1px solid #e2e8f0;">
                     <a href="pro-fr.html">🇫🇷 Pack PRO FR</a>
                     <a href="business-fr.html">🇫🇷 Pack BUSINESS FR</a>
                     <hr style="margin:6px 12px; border:none; border-top:1px solid #e2e8f0;">
                     <a href="gestion.html">🗂️ Pack GESTION</a>
+                    <hr style="margin:6px 12px; border:none; border-top:1px solid #e2e8f0;">
+                    <a href="pedago-basique.html">📗 PédaGO BASIQUE</a>
+                    <a href="pedago-pro.html">📗 PédaGO PRO</a>
                 </div>
             </div>
             <div class="dropdown" id="portailsDropdown">
@@ -164,15 +175,28 @@
     <div class="pack-content">
         <div class="pack-text">
             <div class="price-card">
-                <div class="price-main">160 € achat initial</div>
-                <div class="plus-large">puis</div>
-                <div class="price-year">55 € / An</div>
-                <div class="renewal-text">
-                    Redevance annuelle incluant<br>
-                    la nouvelle clé d'authentification
+                <input type="radio" name="formule" id="fb1" class="formula-radio" checked>
+                <input type="radio" name="formule" id="fb3" class="formula-radio">
+                <div class="formula-tabs">
+                    <label for="fb1">Achat + renouvellement</label>
+                    <label for="fb3">Forfait 3 ans</label>
                 </div>
-                <div class="plus-medium">+</div>
-                <div class="renewal-text" style="margin-top: 0;">mise à jour annuelle majeure</div>
+                <div class="formula-panel" id="panel-fb1">
+                    <div class="price-main">160 € achat initial</div>
+                    <div class="plus-large">puis</div>
+                    <div class="price-year">55 € / An</div>
+                    <div class="renewal-text">
+                        Redevance annuelle incluant<br>
+                        la nouvelle clé d'authentification
+                    </div>
+                    <div class="plus-medium">+</div>
+                    <div class="renewal-text" style="margin-top: 0;">mise à jour annuelle majeure</div>
+                    <div class="formula-note">★ Notre formule recommandée, la plus avantageuse</div>
+                </div>
+                <div class="formula-panel" id="panel-fb3">
+                    <div class="price-main">416 €</div>
+                    <div class="renewal-text">Zéro souci jusqu'à l'échéance : couvre l'installation et les 3 années suivantes (4 ans d'utilisation), sans redevance à régler entre-temps.</div>
+                </div>
             </div>
             <div class="modules-list"><h3><i class="fas fa-cubes"></i> Modules inclus (Pack PRO +)</h3><ul><li><i class="fas fa-check-circle"></i> Gestion Base (classes, élèves, matières, professeurs, affectations)</li><li><i class="fas fa-check-circle"></i> BulletinApp (notes, bulletins PDF, décisions, serveur Android)</li><li><i class="fas fa-check-circle"></i> EDT (emploi du temps, gestion des heures profs)</li><li><i class="fas fa-check-circle"></i> Vue globale par élève + Certificat de scolarité</li><li><i class="fas fa-check-circle"></i> ComptaÉcole (encaissements, dépenses, reçus PDF, suivi mensuel)</li><li><i class="fas fa-star" style="color:#0055A4;"></i> <strong>Notation LSU / compétences</strong> (domaines, paliers de maîtrise, bulletins conformes au programme français)</li></ul></div>
             <div class="included-list"><h3><i class="fas fa-gem"></i> Ce qui est inclus</h3><ul><li><i class="fas fa-check-circle"></i> Installation sur votre poste</li><li><i class="fas fa-check-circle"></i> Activation de la licence</li><li><i class="fas fa-check-circle"></i> Prise en main complète + formation adaptée pour vous et votre équipe</li><li><i class="fas fa-check-circle"></i> Support WhatsApp, téléphone, email ou Facebook</li></ul></div>
