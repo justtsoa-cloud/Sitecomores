@@ -384,6 +384,13 @@ document.addEventListener("click", e => {
 });
 
 renderGammes();
+
+const urlGamme = new URLSearchParams(window.location.search).get("gamme");
+if (urlGamme && DATA[urlGamme]) {
+  state.gamme = urlGamme;
+  renderFormules();
+  show("formules");
+}
 </script>
 </body>
 </html>
