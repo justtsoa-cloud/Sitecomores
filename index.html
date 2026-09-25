@@ -155,6 +155,17 @@
             .demo-badges { justify-content: center; }
             .demo-desc { max-width: 100%; }
         }
+
+        /* ---- Aperçu Nos Offres (accueil) ---- */
+        .gamme-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .gamme-card { --accent:#1A3C6E; position:relative; background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:24px; padding:32px 26px 28px; text-align:left; text-decoration:none; color:inherit; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; display:flex; flex-direction:column; gap:14px; min-height:220px; }
+        .gamme-card:hover { transform:translateY(-4px); box-shadow:0 20px 48px rgba(15,23,42,.14); border-color:var(--accent); }
+        .gamme-card .gc-icon { width:52px; height:52px; border-radius:16px; background:var(--accent); opacity:.12; position:absolute; top:26px; left:26px; }
+        .gamme-card .gc-glyph { position:relative; width:52px; height:52px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; }
+        .gamme-card h3 { margin:0; font-size:1.28rem; font-weight:800; color:var(--accent); }
+        .gamme-card p { margin:0; color:#64748b; font-size:.92rem; flex:1; }
+        .gamme-card .gc-count { font-size:.76rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); }
+        @media (max-width: 760px) { .gamme-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -271,178 +282,27 @@
 
 <section class="section" id="tarifs">
     <div class="container">
-        <h2 class="section-title fade-up">💰 Formules adaptées</h2>
-        <div class="section-sub fade-up">Achat initial unique (Clé + Installation) · Zéro engagement par mois</div>
-        <div class="pricing-grid">
-            
-            <!-- Pack BASIQUE -->
-            <div class="pricing-card fade-up">
-                <h3>Pack BASIQUE</h3>
-                <div class="price">80 €</div>
-                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
-                    <i class="fas fa-chart-line"></i> Soit seulement <strong>7 € / mois</strong> la 1ère année
-                </div>
-                <hr>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
-                    Puis redevance de 40 €/an dès la 2ème année (soit 3 €/mois)
-                </div>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Gestion Base</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> BulletinApp</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> EDT + Heures profs</li>
-                </ul>
-                <a href="basique.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block;">📘 En savoir plus</a>
-            </div>
-            
-            <!-- Pack PRO -->
-            <div class="pricing-card popular fade-up">
-                <div class="popular-badge">⭐ Le plus vendu</div>
-                <h3>Pack PRO</h3>
-                <div class="price">130 €</div>
-                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
-                    <i class="fas fa-chart-line"></i> Soit seulement <strong>11 € / mois</strong> la 1ère année
-                </div>
-                <hr>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
-                    Puis redevance de 55 €/an dès la 2ème année (soit 5 €/mois)
-                </div>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Tout le Pack BASIQUE</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> + ComptaÉcole</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Reçus PDF, synthèses</li>
-                </ul>
-                <a href="pro.html" class="btn-primary" style="width:100%; text-align:center; margin-top:15px; display:block;">⭐ En savoir plus</a>
-            </div>
-            
-            <!-- Pack PREMIUM -->
-            <div class="pricing-card fade-up">
-                <h3>Pack PREMIUM</h3>
-                <div class="price">160 €</div>
-                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
-                    <i class="fas fa-chart-line"></i> Soit seulement <strong>13 € / mois</strong> la 1ère année
-                </div>
-                <hr>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
-                    Puis redevance de 65 €/an dès la 2ème année (soit 5 €/mois)
-                </div>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Tout le Pack PRO</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> + Gestion de Paie</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Bulletins de paie complets</li>
-                </ul>
-                <a href="premium.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block;">💎 En savoir plus</a>
-            </div>
-
-        </div>
-
-        <div class="section-sub fade-up" style="margin-top:50px;">🇫🇷 Spécial LSU / Compétences — programme français</div>
-        <div class="pricing-grid pricing-grid-narrow">
-
-            <!-- Pack PRO FR -->
-            <div class="pricing-card fade-up" style="border: 2px solid #0055A4;">
-                <h3>Pack PRO FR 🇫🇷</h3>
-                <div class="price">160 €</div>
-                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
-                    <i class="fas fa-chart-line"></i> Soit seulement <strong>13 € / mois</strong> la 1ère année
-                </div>
-                <hr>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
-                    Puis redevance de 55 €/an dès la 2ème année (soit 5 €/mois)
-                </div>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Tout le Pack PRO</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Notation LSU / compétences</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Programme français</li>
-                </ul>
-                <a href="pro-fr.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block; background:#0055A4; color:white; border-color:#0055A4;">🇫🇷 En savoir plus</a>
-            </div>
-
-            <!-- Pack BUSINESS FR -->
-            <div class="pricing-card fade-up" style="border: 2px solid #0055A4;">
-                <h3>Pack BUSINESS FR 🇫🇷</h3>
-                <div class="price">220 €</div>
-                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
-                    <i class="fas fa-chart-line"></i> Soit seulement <strong>18 € / mois</strong> la 1ère année
-                </div>
-                <hr>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
-                    Puis redevance de 70 €/an dès la 2ème année (soit 6 €/mois)
-                </div>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Tout le Pack BUSINESS</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Notation LSU / compétences</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Programme français</li>
-                </ul>
-                <a href="business-fr.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block; background:#0055A4; color:white; border-color:#0055A4;">🇫🇷 En savoir plus</a>
-            </div>
-
-        </div>
-
-        <div class="section-sub fade-up" style="margin-top:50px;">🗂️ Spécial Gestion — pilotage administratif sans notes ni EDT</div>
-        <div class="pricing-grid pricing-grid-narrow pricing-grid-single">
-
-            <!-- Pack GESTION -->
-            <div class="pricing-card fade-up" style="border: 2px solid #64748b;">
-                <h3>Pack GESTION 🗂️</h3>
-                <div class="price">160 €</div>
-                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
-                    <i class="fas fa-chart-line"></i> Soit seulement <strong>13 € / mois</strong> la 1ère année
-                </div>
-                <hr>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
-                    Puis redevance de 65 €/an dès la 2ème année (soit 5 €/mois)
-                </div>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Pilotage direction : Compta + Paie</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Sans notes ni emploi du temps</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Pensé pour la gestion administrative</li>
-                </ul>
-                <a href="gestion.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block; background:#64748b; color:white; border-color:#64748b;">🗂️ En savoir plus</a>
-            </div>
-
-        </div>
-
-        <div class="section-sub fade-up" style="margin-top:50px;">📗 Spécial PédaGO — suivi pédagogique sans compta</div>
-        <div class="pricing-grid pricing-grid-narrow">
-
-            <!-- PédaGO BASIQUE -->
-            <div class="pricing-card fade-up" style="border: 2px solid #27AE60;">
-                <h3>PédaGO BASIQUE</h3>
-                <div class="price">64 €</div>
-                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
-                    <i class="fas fa-chart-line"></i> Soit seulement <strong>5 € / mois</strong> la 1ère année
-                </div>
-                <hr>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
-                    Puis redevance de 32 €/an dès la 2ème année (soit 3 €/mois)
-                </div>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Cahier de texte + Programme officiel</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> EDT</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Sans notes ni comptabilité</li>
-                </ul>
-                <a href="pedago-basique.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block; background:#27AE60; color:white; border-color:#27AE60;">📗 En savoir plus</a>
-            </div>
-
-            <!-- PédaGO PRO -->
-            <div class="pricing-card fade-up" style="border: 2px solid #27AE60;">
-                <h3>PédaGO PRO</h3>
-                <div class="price">130 €</div>
-                <div style="margin: -5px 0 15px 0; color: #27AE60; font-weight: 600; font-size: 1.05rem;">
-                    <i class="fas fa-chart-line"></i> Soit seulement <strong>11 € / mois</strong> la 1ère année
-                </div>
-                <hr>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px; text-align: center;">
-                    Puis redevance de 55 €/an dès la 2ème année (soit 5 €/mois)
-                </div>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Tout PédaGO BASIQUE</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> + BulletinApp + Certificats</li>
-                    <li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Cahier de texte avec pièces jointes</li>
-                </ul>
-                <a href="pedago-pro.html" class="btn-secondary" style="width:100%; text-align:center; margin-top:15px; display:block; background:#27AE60; color:white; border-color:#27AE60;">📗 En savoir plus</a>
-            </div>
-
+        <h2 class="section-title fade-up">💰 Nos Offres</h2>
+        <div class="section-sub fade-up">Trois gammes, chacune avec ses formules. Choisissez la vôtre, puis comparez les types de paiement d'un coup d'œil.</div>
+        <div class="gamme-grid">
+            <a href="offres.html" class="gamme-card fade-up" style="--accent:#1A3C6E;">
+                <span class="gc-icon"></span><span class="gc-glyph">🏫</span>
+                <h3>Gamme Plus</h3>
+                <p>La suite desktop tout-en-un pour piloter votre école : élèves, notes, bulletins, comptabilité, emploi du temps.</p>
+                <span class="gc-count">4 formules →</span>
+            </a>
+            <a href="offres.html" class="gamme-card fade-up" style="--accent:#0055A4;">
+                <span class="gc-icon"></span><span class="gc-glyph">🇫🇷</span>
+                <h3>Gamme LSU</h3>
+                <p>Programme scolaire français — notation LSU par compétences et domaines.</p>
+                <span class="gc-count">2 formules →</span>
+            </a>
+            <a href="offres.html" class="gamme-card fade-up" style="--accent:#27AE60;">
+                <span class="gc-icon"></span><span class="gc-glyph">📚</span>
+                <h3>Gamme PédaGO</h3>
+                <p>Cahier de texte numérique — leçons avec pièces jointes, QCM corrigés automatiquement.</p>
+                <span class="gc-count">2 formules →</span>
+            </a>
         </div>
     </div>
 </section>
