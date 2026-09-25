@@ -90,9 +90,10 @@
         .nouveaute-date { display: flex; align-items: center; gap: 8px; color: #27AE60; font-weight: 500; font-size: 0.85rem; margin-bottom: 16px; }
         .nouveaute-description { color: #334155; line-height: 1.6; margin-bottom: 0; font-size: 1rem; }
         
-        .cta-section { background: linear-gradient(135deg, #1A3C6E, #0F2447); border-radius: 48px; padding: 60px 40px; text-align: center; margin: 40px 0; }
+        .cta-section { background: linear-gradient(135deg, #1A3C6E, #0F2447); border-radius: 48px; padding: 60px 40px; text-align: center; margin: 40px 0; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .cta-section h2 { color: white; font-size: 2rem; margin-bottom: 16px; }
         .cta-section p { color: #cbd5e1; margin-bottom: 16px; }
+        #modules-cta:hover .cta-section { transform: translateY(-6px); box-shadow: 0 30px 50px -15px rgba(26,60,110,0.4); }
         .footer { background: #1A3C6E; padding: 48px 0 24px; color: #cbd5e1; margin-top: 60px; }
         .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
         .footer a { color: #9ca3af; text-decoration: none; }
@@ -168,6 +169,7 @@
         <div class="nav-links" id="navLinks">
             <a href="index.html">🏠 Accueil</a>
             <a href="offres.html">💰 Offres</a>
+            <a href="modules.html">🧩 Modules</a>
             <div class="dropdown" id="packsDropdown">
                 <button class="dropbtn">💼 Nos packs <i class="fas fa-chevron-down"></i></button>
                 <div class="dropdown-content">
@@ -257,14 +259,13 @@
     <div class="container">
         <h2 class="section-title fade-up">📦 Une suite modulaire</h2>
         <div class="section-sub fade-up">Chaque module répond à un besoin précis de votre établissement</div>
-        <div class="modules-grid">
-            <div class="module-card fade-up"><div class="card-icon">🔴</div><h3>Gestion Base</h3><p>Classes, élèves, matières, professeurs – centralisez vos données.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Import Excel/CSV</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Affectations profs/matières</li></ul></div>
-            <div class="module-card fade-up"><div class="card-icon">🔵</div><h3>BulletinApp</h3><p>Notes, bulletins PDF, décisions de passage et serveur Android.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Saisie web et mobile</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Bulletins personnalisables</li></ul></div>
-            <div class="module-card fade-up"><div class="card-icon">🟢</div><h3>ComptaÉcole</h3><p>Encaissements, dépenses, reçus PDF, suivi mensuel.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Écolage & inscriptions</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Reçus officiels</li></ul></div>
-            <div class="module-card fade-up"><div class="card-icon">🟡</div><h3>EDT</h3><p>Emploi du temps par classe/prof et suivi des heures.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Planning visuel</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Gestion des heures profs</li></ul></div>
-            <div class="module-card fade-up"><div class="card-icon">🟣</div><h3>Gestion Paie</h3><p>Bulletins de paie, primes, retenues, cotisations sociales.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Salaires profs & personnel</li><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Configurations illimitées</li></ul></div>
-            <div class="module-card fade-up"><div class="card-icon">👁️</div><h3>Vue globale</h3><p>Dashboard élève, indicateurs, rapports de passage.</p><ul class="feature-list"><li><i class="fas fa-check-circle" style="color:#27AE60;"></i> Suivi financier & scolaire</li></ul></div>
-        </div>
+        <a href="modules.html" id="modules-cta" class="fade-up" style="display:block; text-decoration:none;">
+            <div class="cta-section" style="margin:0;">
+                <h2>🧩 Nos Modules</h2>
+                <p>11 modules qui composent nos logiciels — Gestion Base, BulletinApp, ComptaÉcole, Cahier de texte, Notation LSU et bien plus.</p>
+                <span class="btn-primary" style="margin-top:8px; background:white; color:#1A3C6E; font-weight:700;"><i class="fas fa-arrow-right"></i> Voir tous les modules</span>
+            </div>
+        </a>
     </div>
 </section>
 
