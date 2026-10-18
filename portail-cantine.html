@@ -49,6 +49,16 @@
         .pack-switch { display: flex; justify-content: center; gap: 20px; margin: 40px 0 20px; flex-wrap: wrap; }
         .pack-switch a { background: white; border: 1px solid #e2e8f0; padding: 10px 24px; border-radius: 40px; text-decoration: none; color: #1e293b; font-weight: 500; transition: 0.3s; }
         .pack-switch a:hover { background: #1A3C6E; color: white; border-color: #1A3C6E; }
+        .pack-detail { background: white; border-radius: 24px; padding: 32px; margin: 24px 0; border: 1px solid #e2e8f0; }
+        .pack-detail h2 { font-size: 1.6rem; color: #1A3C6E; margin-bottom: 16px; }
+        .pack-detail p { color: #475569; margin-bottom: 14px; }
+        .pack-detail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
+        .pack-detail-item h4 { font-size: 1.05rem; color: #1e293b; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .pack-detail-item h4 i { color: #27AE60; }
+        .pack-detail-item p { font-size: 0.92rem; margin-bottom: 0; }
+        .pack-faq-item { margin-bottom: 20px; }
+        .pack-faq-item summary { font-weight: 700; color: #1A3C6E; cursor: pointer; margin-bottom: 8px; }
+        .pack-faq-item p, .pack-faq-item li { color: #475569; font-size: 0.95rem; }
         .footer { background: #1A3C6E; padding: 48px 0 24px; color: #cbd5e1; margin-top: 60px; }
         .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
         .footer a { color: #9ca3af; text-decoration: none; }
@@ -181,6 +191,47 @@
         <div class="pack-image"><img src="images/CapturePortailCantine.png" alt="Aperçu Portail Cantine"><p style="margin-top:12px; font-size:0.8rem; color:#64748b;">Aperçu</p></div>
     </div>
     <div class="pack-switch"><a href="portail-parent.html">👨‍👩‍👧 Portail Parent</a><a href="portail-direction.html">🏫 Portail Direction</a><a href="portail-enseignants.html">👩‍🏫 Portail Enseignants</a><a href="portail-cantine.html">🍽️ Portail Cantine</a><a href="portail-secretaire.html">💰 Portail Secrétaire</a></div>
+    <div class="pack-detail">
+        <h2>Pour qui est fait le Portail Cantine ?</h2>
+        <p>Le Portail Cantine s'adresse au personnel qui doit cocher les présences aux repas chaque jour, classe par classe, sans toucher à l'ordinateur principal de comptabilité. Les présences remontent automatiquement dans Suite École. Fourni gratuitement avec tout pack Suite École, sur simple demande — comme les trois autres portails d'équipe (Direction, Enseignants, Secrétaire).</p>
+        <div class="pack-detail-grid">
+            <div class="pack-detail-item">
+                <h4><i class="fas fa-check-circle"></i> Présence cochée par le personnel de cantine</h4>
+                <p>Chaque repas est pointé directement par l'équipe de cantine, sans intermédiaire.</p>
+            </div>
+            <div class="pack-detail-item">
+                <h4><i class="fas fa-check-circle"></i> Suivi classe par classe et jour par jour</h4>
+                <p>Historique des présences aux repas consultable à tout moment.</p>
+            </div>
+            <div class="pack-detail-item">
+                <h4><i class="fas fa-check-circle"></i> Remontée automatique vers la comptabilité</h4>
+                <p>Les données de présence sont synchronisées avec Suite École, sans ressaisie.</p>
+            </div>
+            <div class="pack-detail-item">
+                <h4><i class="fas fa-check-circle"></i> Aucune installation requise</h4>
+                <p>Accessible depuis un navigateur en réseau local, sans logiciel à installer sur le poste de cantine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="pack-detail">
+        <h2>Questions fréquentes sur le Portail Cantine</h2>
+        <details class="pack-faq-item" open>
+            <summary>Comment activer le Portail Cantine ?</summary>
+            <p>Sur simple demande, fourni gratuitement avec votre pack Suite École. Aucune licence ni clé supplémentaire à acheter.</p>
+        </details>
+        <details class="pack-faq-item">
+            <summary>Faut-il une connexion internet ?</summary>
+            <p>Non. Comme les autres portails d'équipe, il fonctionne en réseau local au sein de l'établissement, sans installation.</p>
+        </details>
+        <details class="pack-faq-item">
+            <summary>Qui peut utiliser le Portail Cantine ?</summary>
+            <p>Le personnel de cantine, sans accès aux autres données de l'école (élèves, notes, comptabilité générale).</p>
+        </details>
+        <details class="pack-faq-item">
+            <summary>Quelle est la différence avec le Portail Parent ?</summary>
+            <p>Le Portail Cantine, comme les trois autres portails d'équipe, est gratuit et fonctionne uniquement en réseau local. Le Portail Parent est le seul des cinq à avoir un tarif propre (60 € puis 20 € / an), car c'est le seul accessible depuis l'extérieur de l'école, par les familles.</p>
+        </details>
+    </div>
 </section>
 <footer class="footer">
     <div class="container">
