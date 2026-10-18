@@ -59,6 +59,16 @@
         .pack-switch { display: flex; justify-content: center; gap: 20px; margin: 40px 0 20px; flex-wrap: wrap; }
         .pack-switch a { background: white; border: 1px solid #e2e8f0; padding: 10px 24px; border-radius: 40px; text-decoration: none; color: #1e293b; font-weight: 500; transition: 0.3s; }
         .pack-switch a:hover { background: #1A3C6E; color: white; border-color: #1A3C6E; }
+        .pack-detail { background: white; border-radius: 24px; padding: 32px; margin: 24px 0; border: 1px solid #e2e8f0; }
+        .pack-detail h2 { font-size: 1.6rem; color: #1A3C6E; margin-bottom: 16px; }
+        .pack-detail p { color: #475569; margin-bottom: 14px; }
+        .pack-detail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
+        .pack-detail-item h4 { font-size: 1.05rem; color: #1e293b; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .pack-detail-item h4 i { color: #27AE60; }
+        .pack-detail-item p { font-size: 0.92rem; margin-bottom: 0; }
+        .pack-faq-item { margin-bottom: 20px; }
+        .pack-faq-item summary { font-weight: 700; color: #1A3C6E; cursor: pointer; margin-bottom: 8px; }
+        .pack-faq-item p, .pack-faq-item li { color: #475569; font-size: 0.95rem; }
         .footer { background: #1A3C6E; padding: 48px 0 24px; color: #cbd5e1; margin-top: 60px; }
         .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
         .footer a { color: #9ca3af; text-decoration: none; }
@@ -215,6 +225,47 @@
         <div class="pack-image"><img src="images/CaptureGestion.png" alt="Aperçu Pack GESTION"><p style="margin-top:12px; font-size:0.8rem; color:#64748b;">Aperçu</p></div>
     </div>
     <div class="pack-switch"><a href="premium.html">💎 Voir le pack PREMIUM</a></div>
+    <div class="pack-detail">
+        <h2>Pour qui est fait le Pack GESTION ?</h2>
+        <p>Le Pack GESTION s'adresse aux établissements qui confient déjà le suivi pédagogique (notes, bulletins, emploi du temps) à un autre outil — par exemple un PédaGO — et cherchent uniquement un logiciel solide pour la comptabilité et la paie. Contrairement au <a href="premium.html">Pack PREMIUM</a>, il ne gère volontairement aucune donnée pédagogique : c'est un pack 100% administratif et financier, pensé pour la direction et la comptabilité.</p>
+        <div class="pack-detail-grid">
+            <div class="pack-detail-item">
+                <h4><i class="fas fa-check-circle"></i> ComptaÉcole complète</h4>
+                <p>Encaissements, dépenses, reçus PDF, exports Excel/PDF et badge impayés en temps réel.</p>
+            </div>
+            <div class="pack-detail-item">
+                <h4><i class="fas fa-check-circle"></i> Gestion de Paie du personnel</h4>
+                <p>Bulletins, primes, retenues et congés, pour l'ensemble de l'équipe de l'établissement.</p>
+            </div>
+            <div class="pack-detail-item">
+                <h4><i class="fas fa-check-circle"></i> Certificats administratifs</h4>
+                <p>Certificat de scolarité et certificat de travail générés directement depuis le logiciel.</p>
+            </div>
+        </div>
+    </div>
+    <div class="pack-detail">
+        <h2>Questions fréquentes sur le Pack GESTION</h2>
+        <details class="pack-faq-item" open>
+            <summary>Comment se décompose le paiement sur les premières années ?</summary>
+            <p>L'achat initial (160 €) inclut déjà la première année. La redevance annuelle de 65 € ne commence qu'à partir de la 2<sup>e</sup> année : Année 1 = 160 € (rien de plus), Année 2 = 65 €, Année 3 = 65 €.</p>
+        </details>
+        <details class="pack-faq-item">
+            <summary>Que couvre la redevance annuelle de 65 € ?</summary>
+            <p>Elle inclut la nouvelle clé d'authentification de l'année ainsi que la mise à jour annuelle majeure du logiciel.</p>
+        </details>
+        <details class="pack-faq-item">
+            <summary>Que se passe-t-il si je ne renouvelle pas ?</summary>
+            <p>Le logiciel se bloque après 12 mois sans renouvellement. Vos données restent intactes mais inaccessibles tant que la licence n'est pas renouvelée.</p>
+        </details>
+        <details class="pack-faq-item">
+            <summary>Quelle configuration faut-il pour installer le Pack GESTION ?</summary>
+            <p>Windows 10/11 ou Linux, 4 Go de RAM et 500 Mo d'espace disque suffisent.</p>
+        </details>
+        <details class="pack-faq-item">
+            <summary>Quelle est la différence avec le Pack PREMIUM ?</summary>
+            <p>Le <a href="premium.html">Pack PREMIUM</a> reprend toute la partie pédagogique (notes, bulletins, emploi du temps) en plus de la comptabilité et de la paie. Le Pack GESTION s'adresse aux établissements qui gèrent déjà le pédagogique ailleurs et n'ont besoin que du volet administratif et financier.</p>
+        </details>
+    </div>
 </section>
 <footer class="footer">
     <div class="container">
