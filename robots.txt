@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ecolefr.suitemg.com/sitemap.xml
