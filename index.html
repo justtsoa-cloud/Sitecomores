@@ -173,9 +173,29 @@
         .gamme-card p { margin:0; color:#64748b; font-size:.92rem; flex:1; }
         .gamme-card .gc-count { font-size:.76rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); }
         @media (max-width: 760px) { .gamme-grid { grid-template-columns: 1fr; } }
+
+        /* Animation d'entrée (logo) */
+        #splash { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#f0f4fa 0%,#e8edf5 50%,#ffffff 100%); }
+        #splash-logo { width:clamp(120px,26vmin,300px); height:clamp(120px,26vmin,300px); border-radius:50%; opacity:0; transform:scale(.72); box-shadow:0 0 0 0 rgba(26,60,110,.18); animation: splashLogoIn .7s cubic-bezier(.22,1,.36,1) .15s forwards, splashPulse 1.8s ease-out .85s 1; }
+        #splash-label { position:absolute; bottom:18%; left:50%; transform:translateX(-50%); font-size:.78rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#1A3C6E; opacity:0; animation: splashLabelIn .6s ease .55s forwards; }
+        @keyframes splashLogoIn { to { opacity:1; transform:scale(1); } }
+        @keyframes splashPulse { 0% { box-shadow:0 0 0 0 rgba(26,60,110,.18); } 70% { box-shadow:0 0 0 46px rgba(26,60,110,0); } 100% { box-shadow:0 0 0 0 rgba(26,60,110,0); } }
+        @keyframes splashLabelIn { to { opacity:.85; } }
+        #splash.leaving { animation: splashOut .6s cubic-bezier(.6,0,.4,1) forwards; pointer-events:none; }
+        #splash.leaving #splash-logo, #splash.leaving #splash-label { animation:none; transition:opacity .35s ease, transform .5s cubic-bezier(.6,0,.4,1); opacity:0; transform:scale(1.08); }
+        @keyframes splashOut { to { opacity:0; visibility:hidden; } }
+        @media (prefers-reduced-motion: reduce) {
+            #splash-logo { animation:none; opacity:1; transform:scale(1); }
+            #splash-label { animation:none; opacity:.85; }
+            #splash.leaving { animation:none; opacity:0; visibility:hidden; transition:opacity .25s linear; }
+        }
     </style>
 </head>
 <body>
+<div id="splash" role="presentation" aria-hidden="true">
+    <img id="splash-logo" src="images/logo.png" alt="">
+    <div id="splash-label">Tsoa Apps</div>
+</div>
 <div class="particles" id="particles"></div>
 <div class="navbar">
     <div class="container nav-container">
@@ -466,5 +486,15 @@
 </script>
 <script data-goatcounter="https://ntsoa.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+    var splash = document.getElementById('splash');
+    if (!splash) return;
+    setTimeout(function(){
+        splash.classList.add('leaving');
+        setTimeout(function(){ splash.remove(); }, 650);
+    }, 2200);
+})();
+</script>
 </body>
 </html>
