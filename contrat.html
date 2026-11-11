@@ -12,10 +12,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e293b; line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-        .navbar { position: sticky; top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(26,60,110,0.15); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; flex-wrap: wrap; gap: 16px; }
+        .navbar { position: sticky; top: 16px; z-index: 1000; }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 10px 22px; flex-wrap: wrap; gap: 16px; background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 60px; border: 1px solid rgba(26,60,110,0.14); box-shadow: 0 10px 34px rgba(15,23,42,0.12); transition: all 0.35s cubic-bezier(0.25,0.8,0.25,1); max-width: 1180px; margin: 0 auto; }
         .logo { display: flex; align-items: center; gap: 10px; }
-        .logo img { height: 45px; width: auto; }
+        .logo img { height: 45px; width: 45px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 14px rgba(26,60,110,0.35); transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1); }
+        .logo:hover img { transform: rotate(-10deg) scale(1.08); }
         .logo span { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #1A3C6E, #27AE60); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .nav-links { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .nav-links a { text-decoration: none; font-weight: 500; color: #1e293b; transition: 0.3s; }
@@ -71,6 +72,7 @@
             .menu-toggle {
                 display: block;
             }
+            .nav-container { border-radius: 26px; padding: 10px 16px; max-width: none; }
             .nav-links { display: none; width: 85%; margin: 0 auto; flex-direction: column; align-items: stretch; gap: 12px; padding: 20px 0; border-top: 1px solid rgba(26,60,110,0.15); }
             .nav-links.show {
                 display: flex;
