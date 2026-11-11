@@ -80,7 +80,7 @@
             color: #1A3C6E;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .hero h1 { font-size: 2rem; }
             .contract-card { padding: 20px; }
             .tarif-table th, .tarif-table td { padding: 8px; }
@@ -396,13 +396,13 @@
         const dropContent = dropdown.querySelector('.dropdown-content');
 
         dropdown.addEventListener('mouseenter', () => {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 1024) {
                 clearTimeout(timeout);
                 dropContent.style.display = 'block';
             }
         });
         dropdown.addEventListener('mouseleave', () => {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 1024) {
                 timeout = setTimeout(() => {
                     dropContent.style.display = 'none';
                 }, 350);
@@ -410,20 +410,20 @@
         });
 
         dropbtn.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) {
                 e.preventDefault();
                 dropContent.classList.toggle('show');
             }
         });
 
         dropContent.addEventListener('mouseenter', () => {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 1024) {
                 clearTimeout(timeout);
                 dropContent.style.display = 'block';
             }
         });
         dropContent.addEventListener('mouseleave', () => {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 1024) {
                 timeout = setTimeout(() => {
                     dropContent.style.display = 'none';
                 }, 350);

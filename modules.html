@@ -79,7 +79,7 @@
         .module-card2 .dots i { width:9px; height:9px; border-radius:50%; display:inline-block; }
         .module-card2 .dots span { font-size:.74rem; color:#64748b; font-weight:600; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .hero h1 { font-size: 2.1rem; }
             .logo img { height: 35px; }
             .menu-toggle { display: block; }
@@ -287,11 +287,11 @@
         let timeout;
         const dropbtn = dropdown.querySelector('.dropbtn');
         const dropContent = dropdown.querySelector('.dropdown-content');
-        dropdown.addEventListener('mouseenter', () => { if (window.innerWidth > 768) { clearTimeout(timeout); dropContent.style.display = 'block'; } });
-        dropdown.addEventListener('mouseleave', () => { if (window.innerWidth > 768) { timeout = setTimeout(() => { dropContent.style.display = 'none'; }, 350); } });
-        dropbtn.addEventListener('click', (e) => { if (window.innerWidth <= 768) { e.preventDefault(); dropContent.classList.toggle('show'); } });
-        dropContent.addEventListener('mouseenter', () => { if (window.innerWidth > 768) { clearTimeout(timeout); dropContent.style.display = 'block'; } });
-        dropContent.addEventListener('mouseleave', () => { if (window.innerWidth > 768) { timeout = setTimeout(() => { dropContent.style.display = 'none'; }, 350); } });
+        dropdown.addEventListener('mouseenter', () => { if (window.innerWidth > 1024) { clearTimeout(timeout); dropContent.style.display = 'block'; } });
+        dropdown.addEventListener('mouseleave', () => { if (window.innerWidth > 1024) { timeout = setTimeout(() => { dropContent.style.display = 'none'; }, 350); } });
+        dropbtn.addEventListener('click', (e) => { if (window.innerWidth <= 1024) { e.preventDefault(); dropContent.classList.toggle('show'); } });
+        dropContent.addEventListener('mouseenter', () => { if (window.innerWidth > 1024) { clearTimeout(timeout); dropContent.style.display = 'block'; } });
+        dropContent.addEventListener('mouseleave', () => { if (window.innerWidth > 1024) { timeout = setTimeout(() => { dropContent.style.display = 'none'; }, 350); } });
     });
 </script>
 <script data-goatcounter="https://ntsoa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
